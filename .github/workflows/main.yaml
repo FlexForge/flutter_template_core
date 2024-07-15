@@ -13,14 +13,13 @@ on:
       - main
 
 permissions:
-  pull-requests: read
   pull-requests: write
 
 env: 
   # Semantic PR Constants
   pr_types: ""
   pr_scope: ""
-  
+
   # Build Constants
   analyze_directories: "lib test"
   flutter_channel: "stable"
