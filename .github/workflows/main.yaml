@@ -33,6 +33,8 @@ jobs:
             style
             refactor
             test
+            config
+            docs
           validateSingleCommit: false
           ignoreLabels: |
             bot
