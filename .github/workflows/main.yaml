@@ -1,0 +1,75 @@
+name: flutter_template_core
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  pull-requests: read
+  pull-requests: write
+
+env: 
+  # Semantic PR Constants
+  pr_types: ""
+  pr_scope: ""
+  
+  # Build Constants
+  analyze_directories: "lib test"
+  flutter_channel: "stable"
+  flutter_version: "3.22.2"
+  format_directories: "lib test"
+  format_line_length: "80"
+  runs_on: "ubuntu-latest"
+  working_directory: "."
+
+jobs:
+  semantic-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🤖 Ensure Commit is Semantic
+        if: github.event_name == 'pull_request'
+        uses: amannn/action-semantic-pull-request@0723387faaf9b38adef4775cd42cfd5155ed6017 # v5.5.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: $pr_types
+          scopes: $pr_scopes
+          validateSingleCommit: false
+          ignoreLabels: |
+            bot
+            ignore-semantic-pull-request
+          wip: false
+
+  build:
+    defaults:
+      run:
+        working-directory: $working_directory
+
+    runs-on: $runs_on
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐦 Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: $flutter_version
+          channel: $flutter_channel
+          cache: true
+          cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+
+      - name: ✨ Check Formatting
+        run: dart format --line-length $format_line_length --set-exit-if-changed $format_directories
+
+      - name: 🕵️ Analyze
+        run: flutter analyze $analyze_directories
