@@ -1,5 +1,9 @@
 name: flutter_template_core
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
@@ -22,8 +26,6 @@ env:
   flutter_version: "3.22.2"
   format_directories: "lib test"
   format_line_length: "80"
-  runs_on: "ubuntu-latest"
-  working_directory: "."
 
 jobs:
   semantic-pull-request:
@@ -50,11 +52,7 @@ jobs:
           wip: false
 
   build:
-    defaults:
-      run:
-        working-directory: $working_directory
-
-    runs-on: $runs_on
+    runs-on: ubuntu-latest
 
     steps:
       - name: 📚 Git Checkout
