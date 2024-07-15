@@ -33,6 +33,8 @@ jobs:
             style
             refactor
             test
+            config
+            docs
           validateSingleCommit: false
           ignoreLabels: |
             bot
@@ -59,3 +61,18 @@ jobs:
 
       - name: 🕵️ Analyze
         run: flutter analyze lib
+
+  spell-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🪄 Spell Check
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          config: .github/cspell.json
+          incremental_files_only: true
+          root: ./lib
+          verbose: false
