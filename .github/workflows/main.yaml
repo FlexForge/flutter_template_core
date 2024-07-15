@@ -72,6 +72,8 @@ jobs:
       - name: 🪄 Spell Check
         uses: streetsidesoftware/cspell-action@v6
         with:
+          files: |
+            !.github/**/*.{txt}
           config: .github/cspell.json
           incremental_files_only: true
           root: .
