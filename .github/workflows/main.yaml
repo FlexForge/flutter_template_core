@@ -15,18 +15,6 @@ on:
 permissions:
   pull-requests: write
 
-env: 
-  # Semantic PR Constants
-  pr_types: ""
-  pr_scope: ""
-
-  # Build Constants
-  analyze_directories: "lib test"
-  flutter_channel: "stable"
-  flutter_version: "3.22.2"
-  format_directories: "lib test"
-  format_line_length: "80"
-
 jobs:
   semantic-pull-request:
     runs-on: ubuntu-latest
@@ -56,18 +44,18 @@ jobs:
 
     steps:
       - name: 📚 Git Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v1
 
       - name: 🐦 Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: $flutter_version
-          channel: $flutter_channel
+          flutter-version: 3.22.2
+          channel: stable
           cache: true
           cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
 
       - name: ✨ Check Formatting
-        run: dart format --line-length $format_line_length --set-exit-if-changed $format_directories
+        run: dart format --line-length 80 --set-exit-if-changed lib
 
       - name: 🕵️ Analyze
-        run: flutter analyze $analyze_directories
+        run: flutter analyze lib
