@@ -35,6 +35,7 @@ jobs:
             test
             config
             docs
+            build
           validateSingleCommit: false
           ignoreLabels: |
             bot
