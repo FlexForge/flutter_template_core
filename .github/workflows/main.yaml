@@ -40,8 +40,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          types: $pr_types
-          scopes: $pr_scopes
+          types: |
+            fix
+            feat
+            chore
+            style
+            refactor
+            test
           validateSingleCommit: false
           ignoreLabels: |
             bot
