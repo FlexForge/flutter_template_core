@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: 📚 Git Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
 
       - name: 🏷️ Bump version and push tag
         id: tag_version
