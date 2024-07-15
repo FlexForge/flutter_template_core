@@ -11,8 +11,10 @@ gcloud
 genhtml
 lcov
 livestream
+mathieudutour
 minimalistic
 mocktail
+ncipollo
 pana
 pubspec
 quickstart

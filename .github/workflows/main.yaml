@@ -35,6 +35,7 @@ jobs:
             test
             config
             docs
+            build
           validateSingleCommit: false
           ignoreLabels: |
             bot
@@ -74,5 +75,5 @@ jobs:
         with:
           config: .github/cspell.json
           incremental_files_only: true
-          root: ./lib
+          root: .
           verbose: false
