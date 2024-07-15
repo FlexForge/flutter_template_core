@@ -75,4 +75,4 @@ jobs:
           config: .github/cspell.json
           incremental_files_only: true
           root: ./lib
-          verbose: false
+          verbose: false   
