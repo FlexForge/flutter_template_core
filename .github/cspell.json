@@ -7,7 +7,13 @@
             "name": "allowed_dictionary",
             "path": "./.cspell/allowed.txt",
             "addWords": true
-        }
+        },
+        {
+            "name": "forbidden_dictionary",
+            "path": "./.cspell/forbidden.txt",
+            "addWords": true
+        },
     ],
     "useGitignore": true,
+    "ignorePaths": ["ios", "android", "/forbidden.txt"]
 }
