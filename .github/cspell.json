@@ -1,6 +1,8 @@
 {
     "version": "0.2",
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "enabled": true,
+    "language": "en",
     "dictionaries": ["allowed_dictionary", "forbidden_dictionary"],
     "dictionaryDefinitions": [
         {
@@ -15,5 +17,6 @@
         },
     ],
     "useGitignore": true,
-    "ignorePaths": ["ios", "android", "/forbidden.txt"]
+    "globRoot": "${workspaceFolder}/..",
+    "ignorePaths": ["ios", "android", "**/forbidden.txt"]
 }
