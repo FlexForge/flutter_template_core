@@ -17,6 +17,12 @@
         },
     ],
     "useGitignore": true,
-    "globRoot": "${workspaceFolder}/..",
-    "ignorePaths": ["ios", "android", "**/forbidden.txt"]
+    "ignorePaths": [
+        "**/ios",
+        "**/windows",
+        "**/android",
+        "**/macos",
+        "**/linux",
+        "**/forbidden.txt",
+    ]
 }
