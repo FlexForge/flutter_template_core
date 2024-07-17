@@ -10,7 +10,7 @@ class PostRepository {
 
   Box<Post> get box => store.box<Post>();
 
-  Future<Either<Failure, List<PostModel>>> getPosts() async {
+  Either<Failure, List<PostModel>> getPosts() {
     try {
       final res = box.getAll();
       return right(res.map((e) => e.toModel()).toList());
