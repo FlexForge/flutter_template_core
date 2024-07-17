@@ -36,3 +36,10 @@ xctest
 xctool
 xctrunner
 xcworkspace
+riverpod
+objectbox
+symbolication
+uids
+fpdart
+cupertino
+buildlog

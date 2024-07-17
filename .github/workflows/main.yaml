@@ -56,6 +56,9 @@ jobs:
           channel: stable
           cache: true
           cache-key: flutter-:os:-:channel:-:version:-:arch:-:hash:-${{ hashFiles('**/pubspec.lock') }}
+      
+      - name: ⚙️ Run Setup
+        run: dart run build_runner build
 
       - name: ✨ Check Formatting
         run: dart format --line-length 80 --set-exit-if-changed lib
