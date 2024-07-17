@@ -1,3 +1,4 @@
+import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'post_model.freezed.dart';
@@ -9,4 +10,13 @@ class PostModel with _$PostModel {
     required String title,
     required String body,
   }) = _PostModel;
+}
+
+extension ConvertPostModel on PostModel {
+  Post toEntity() => Post(
+        title,
+        id: id,
+        body: body,
+        date: DateTime.now(),
+      );
 }

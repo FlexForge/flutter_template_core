@@ -1,4 +1,5 @@
 import 'package:flutter_template_core/db/objectbox.g.dart';
+import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -7,7 +8,9 @@ class ObjectBox {
   late final Store store;
 
   ObjectBox._create(this.store) {
-    // Add any additional setup code, e.g. build queries.
+    if (store.box<Post>().isEmpty()) {
+      _putDemoData();
+    }
   }
 
   /// Create an instance of ObjectBox to use throughout the app.
@@ -20,5 +23,15 @@ class ObjectBox {
       ),
     );
     return ObjectBox._create(store);
+  }
+
+  void _putDemoData() {
+    final demoPosts = [
+      Post('Post 1', body: 'Body 1'),
+      Post('Post 2', body: 'Body 2'),
+      Post('Post 3', body: 'Body 3'),
+    ];
+
+    store.box<Post>().putManyAsync(demoPosts);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
 import 'package:intl/intl.dart';
 import 'package:objectbox/objectbox.dart';
 
@@ -20,4 +21,12 @@ class Post {
   DateTime date;
 
   String get dateFormat => DateFormat('dd.MM.yyyy hh:mm:ss').format(date);
+}
+
+extension ConvertPost on Post {
+  PostModel toModel() => PostModel(
+        id: id,
+        title: title,
+        body: body ?? '',
+      );
 }
