@@ -7,7 +7,7 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Todo: let's stylize it at some point
+    // TODO(matt): let's stylize it at some point
     return Scaffold(
       body: Center(child: Text(message)),
     );
