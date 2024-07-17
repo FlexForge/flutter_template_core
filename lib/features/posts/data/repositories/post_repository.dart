@@ -18,4 +18,15 @@ class PostRepository {
       return left(Failure.internalServerError(message: e.toString()));
     }
   }
+
+  Either<Failure, int> createPost() {
+    try {
+      final postToAdd = Post('New Post');
+      final res = box.put(postToAdd);
+
+      return right(res);
+    } catch (e) {
+      return left(Failure.internalServerError(message: e.toString()));
+    }
+  }
 }
