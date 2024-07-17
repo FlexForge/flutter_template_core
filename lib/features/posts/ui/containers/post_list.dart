@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
 
 class PostList extends ConsumerWidget {
@@ -9,7 +10,8 @@ class PostList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(postListControllerProvider);
 
-    return Container(
+    return ColoredBox(
+      color: context.colors.backgroundPrimary,
       child: posts.isEmpty
           ? const Padding(
               padding: EdgeInsets.all(4),
@@ -18,11 +20,13 @@ class PostList extends ConsumerWidget {
               ),
             )
           : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...posts.map(
-                  (post) => ListTile(
-                    title: Text(post.title),
-                    subtitle: Text(post.body),
+                  (post) => Text(
+                    post.title,
+                    style: context.typography.bodyLarge
+                        .copyWith(color: context.colors.foregroundPrimary),
                   ),
                 ),
               ],
