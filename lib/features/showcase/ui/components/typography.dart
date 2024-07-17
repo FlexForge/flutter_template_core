@@ -9,13 +9,15 @@ class TypographyShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Section(
-      header: 'Stylings',
+      header: 'Styles',
       subHeader: 'Typography',
       padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppLayout.p4,
-          vertical: AppLayout.p2,
+        padding: const EdgeInsets.only(
+          left: AppLayout.p4,
+          right: AppLayout.p4,
+          top: AppLayout.p2,
+          bottom: AppLayout.p4,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
