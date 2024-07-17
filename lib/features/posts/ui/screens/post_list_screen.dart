@@ -7,6 +7,9 @@ import 'package:flutter_template_core/features/posts/ui/containers/post_list.dar
 class PostListScreen extends ConsumerWidget {
   const PostListScreen({super.key});
 
+  static const routePath = '/';
+  static const routeName = 'postList';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     void create() {

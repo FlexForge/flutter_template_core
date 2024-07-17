@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template_core/features/posts/ui/screens/post_list_screen.dart';
+import 'package:flutter_template_core/core/config/router.dart';
+import 'package:flutter_template_core/flavors.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PostListScreen(),
+    return MaterialApp.router(
+      title: F.title,
+      debugShowCheckedModeBanner: false,
+      routeInformationParser: router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationProvider: router.routeInformationProvider,
     );
   }
 }
