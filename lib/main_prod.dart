@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/app.dart';
+import 'package:flutter_template_core/bootstrap.dart';
 import 'package:flutter_template_core/flavors.dart';
 
-void main() {
+Future<void> main() async {
   F.appFlavor = Flavor.prod;
 
-  runApp(const MainApp());
+  runApp(
+    UncontrolledProviderScope(
+      container: await bootstrap(),
+      child: const MainApp(),
+    ),
+  );
 }
