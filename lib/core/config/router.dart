@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template_core/core/common/ui/screens/error_screen.dart';
-import 'package:flutter_template_core/features/posts/ui/screens/post_list_screen.dart';
+import 'package:flutter_template_core/core/common/ui/screens/main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 /// Main router for the Example app
@@ -15,9 +15,9 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   routes: [
     GoRoute(
-      path: PostListScreen.routePath,
-      name: PostListScreen.routeName,
-      builder: (context, state) => const PostListScreen(),
+      path: '/',
+      name: 'home',
+      builder: (context, state) => const MainScreen(),
     ),
   ],
   observers: [

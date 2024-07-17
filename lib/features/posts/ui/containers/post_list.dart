@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
+import 'package:flutter_template_core/features/posts/ui/components/post_list_item.dart';
 
 class PostList extends ConsumerWidget {
   const PostList({super.key});
@@ -23,11 +24,7 @@ class PostList extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...posts.map(
-                  (post) => Text(
-                    post.title,
-                    style: context.typography.bodyLarge
-                        .copyWith(color: context.colors.foregroundPrimary),
-                  ),
+                  (post) => PostListItem(post: post),
                 ),
               ],
             ),
