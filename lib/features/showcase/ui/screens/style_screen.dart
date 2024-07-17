@@ -16,27 +16,31 @@ class ShowcaseScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: context.colors.backgroundPrimary,
-      appBar: CupertinoNavigationBar(
-        backgroundColor: context.colors.backgroundSecondary,
-        middle: Text(
-          'Showcase',
-          style: TextStyle(color: context.colors.foregroundPrimary),
-        ),
-        border: null,
-        padding: EdgeInsetsDirectional.zero,
-      ),
-      body: const SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
-        clipBehavior: Clip.none,
-        child: Column(
-          children: [
-            SizedBox(height: AppLayout.p6),
-            TypographyShowcase(),
-            SizedBox(height: AppLayout.p3),
-            ColorsShowcase(),
-            SizedBox(height: AppLayout.bottomBuffer),
-          ],
-        ),
+      body: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        scrollBehavior: const CupertinoScrollBehavior(),
+        slivers: [
+          CupertinoSliverNavigationBar(
+            largeTitle: Text(
+              'Showcase',
+              style: TextStyle(color: context.colors.foregroundPrimary),
+            ),
+            backgroundColor: context.colors.backgroundSecondary,
+            border: null,
+            heroTag: 'showcase_screen',
+          ),
+          const SliverToBoxAdapter(
+            child: Column(
+              children: [
+                SizedBox(height: AppLayout.p6),
+                TypographyShowcase(),
+                SizedBox(height: AppLayout.p3),
+                ColorsShowcase(),
+                SizedBox(height: AppLayout.bottomBuffer),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -19,21 +19,23 @@ class PostListScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: context.colors.backgroundPrimary,
-      appBar: CupertinoNavigationBar(
-        backgroundColor: context.colors.backgroundSecondary,
-        middle: Text(
-          'Feed',
-          style: TextStyle(color: context.colors.foregroundPrimary),
-        ),
-        trailing:
-            IconButton(onPressed: create, icon: const Icon(CupertinoIcons.add)),
-        border: null,
-        padding: EdgeInsetsDirectional.zero,
-      ),
-      body: const SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
-        clipBehavior: Clip.none,
-        child: PostList(),
+      body: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        scrollBehavior: const CupertinoScrollBehavior(),
+        slivers: [
+          CupertinoSliverNavigationBar(
+            largeTitle: Text(
+              'Feed',
+              style: TextStyle(color: context.colors.foregroundPrimary),
+            ),
+            backgroundColor: context.colors.backgroundSecondary,
+            border: null,
+            heroTag: 'library_screen',
+          ),
+          const SliverToBoxAdapter(
+            child: PostList(),
+          ),
+        ],
       ),
     );
   }
