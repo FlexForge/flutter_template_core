@@ -24,6 +24,7 @@ class PostListItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppLayout.cornerRadius),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (type == PostType.wide)
             Padding(
@@ -31,12 +32,12 @@ class PostListItem extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "More records melt in B.C.'s ongoing heat wave",
+                          post.title,
                           style: context.typography.headlineMedium.copyWith(
                             fontWeight: FontWeight.w700,
                             letterSpacing: -0.2,
@@ -49,20 +50,14 @@ class PostListItem extends StatelessWidget {
                             height: AppLayout.p2,
                           ),
                           Text(
-                            "British Columbia's on going heat wave continues to "
-                            'break daily temperatures records, with another 16 '
-                            'melting on Wednesday.\n\nAs sweltering heat settled '
-                            'further into the increasingly dry landscape, Ashcroft,'
-                            ' or the Cache creek area, was the hottest of all. It '
-                            'reached 40.5 C on July 17, breaking a record of 38.8 '
-                            'C set in 2018.',
+                            post.body,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: context.typography.bodySmall.copyWith(
                               color: context.colors.foregroundSecondary,
                             ),
                           ),
-                        ]
+                        ],
                       ],
                     ),
                   ),
@@ -85,7 +80,7 @@ class PostListItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(AppLayout.p3),
               child: Text(
-                "Federal Labour Minister Seamus O'Regan to resign from Trudeau's cabinet",
+                post.title,
                 style: type == PostType.large
                     ? context.typography.headlineLarge.copyWith(
                         fontWeight: FontWeight.w700,
@@ -108,11 +103,13 @@ class PostListItem extends StatelessWidget {
           Divider(color: context.colors.divider, height: 1),
           Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: AppLayout.p3, vertical: AppLayout.p1),
+              horizontal: AppLayout.p3,
+              vertical: AppLayout.p1,
+            ),
             child: Row(
               children: [
                 Text(
-                  '17m ago • Alexander Panetta',
+                  '17m ago • Alexander',
                   style: context.typography.labelSmall.copyWith(
                     color: context.colors.foregroundSecondary,
                   ),
