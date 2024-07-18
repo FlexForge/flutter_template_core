@@ -23,3 +23,23 @@ extension ConvertPostModel on PostModel {
         date: date,
       );
 }
+
+extension GetTimePassed on PostModel {
+  String timePassed() {
+    if (date == null) return '';
+
+    final currentTime = DateTime.now();
+    final duration = currentTime.difference(date!);
+
+    final minutes = duration.inMinutes;
+    if(minutes < 60 ) return '${minutes}m';
+
+    final hours = duration.inHours;
+    if (hours < 24) return '${hours}h';
+
+    final days = duration.inDays;
+    if (days < 365) return '${days}d';
+
+    return '${days ~/ 365}y';
+  }
+}

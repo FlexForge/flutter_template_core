@@ -109,7 +109,7 @@ class PostListItem extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '17m ago • Alexander',
+                  '${post.timePassed()} ago • ${post.author}',
                   style: context.typography.labelSmall.copyWith(
                     color: context.colors.foregroundSecondary,
                   ),
