@@ -1,10 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/common/ui/forms/flex_text_field.dart';
 import 'package:flutter_template_core/core/common/ui/forms/form_wrapper.dart';
+import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_create_controller.dart';
 import 'package:flutter_template_core/features/posts/controllers/post_form_controller.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_form_model.dart';
+import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reactive_forms_annotations/reactive_forms_annotations.dart';
 
 class PostCreateForm extends ConsumerWidget {
@@ -14,9 +21,34 @@ class PostCreateForm extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final form = ref.watch(postFormControllerProvider);
 
+    ref.listen<PostModel?>(
+      postCreateControllerProvider,
+      (previous, next) {
+        if (next == null) return;
+
+        ref.read(postListControllerProvider.notifier).addPost(next);
+        context.pop();
+      },
+    );
+
     return ReactivePostForm(
       form: form,
       child: FormWrapper(
+        actionButton: ReactivePostFormConsumer(
+          builder: (context, form, child) {
+            return Expanded(
+              child: LargeButton(
+                enabled: form.currentForm.valid,
+                onPressed: () =>
+                    ref.read(postFormControllerProvider.notifier).create(),
+                label: 'Next',
+                icon: Icons.keyboard_arrow_right,
+                backgroundColor: context.colors.foregroundPrimary,
+                foregroundColor: context.colors.backgroundPrimary,
+              ),
+            );
+          },
+        ),
         form: Column(
           children: [
             FlexTextField<String>(

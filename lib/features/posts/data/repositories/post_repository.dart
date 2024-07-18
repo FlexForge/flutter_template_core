@@ -1,30 +1,49 @@
 import 'package:flutter_template_core/core/utils/failure.dart';
-import 'package:flutter_template_core/db/objectbox.g.dart';
+import 'package:flutter_template_core/db/objectbox.g.dart' as ob;
 import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
 import 'package:fpdart/fpdart.dart';
 
 class PostRepository {
   PostRepository({required this.store});
-  final Store store;
+  final ob.Store store;
 
-  Box<Post> get box => store.box<Post>();
+  ob.Box<Post> get box => store.box<Post>();
 
   Either<Failure, List<PostModel>> getPosts() {
     try {
-      final res = box.getAll();
+      final res = box
+          .query()
+          .order(ob.Post_.date, flags: ob.Order.descending)
+          .build()
+          .find();
+
       return right(res.map((e) => e.toModel()).toList());
     } catch (e) {
       return left(Failure.internalServerError(message: e.toString()));
     }
   }
 
-  Either<Failure, int> createPost() {
+  Either<Failure, PostModel> createPost({
+    required String name,
+    required String author,
+    String? body,
+  }) {
     try {
-      final postToAdd = Post('New Post', 'New Author');
-      final res = box.put(postToAdd);
+      final postToAdd = Post(name, author, body: body);
+      final id = box.put(postToAdd);
 
-      return right(res);
+      final res = box.get(id);
+
+      if (res == null) {
+        return left(
+          const Failure.internalServerError(
+            message: 'Unable to fetch new post',
+          ),
+        );
+      }
+
+      return right(res.toModel());
     } catch (e) {
       return left(Failure.internalServerError(message: e.toString()));
     }

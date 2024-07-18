@@ -24,7 +24,7 @@ class PostCreateScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           onPressed: () => context.pop(),
           icon: const Icon(
-            Icons.chevron_left,
+            Icons.close,
           ),
           color: context.colors.foregroundPrimary,
           iconSize: 24,
