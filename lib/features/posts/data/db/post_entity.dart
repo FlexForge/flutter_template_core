@@ -5,7 +5,8 @@ import 'package:objectbox/objectbox.dart';
 @Entity()
 class Post {
   Post(
-    this.title, {
+    this.title,
+    this.author, {
     this.id = 0,
     this.body,
     DateTime? date,
@@ -15,6 +16,7 @@ class Post {
   int id = 0;
 
   String title;
+  String author;
   String? body;
 
   @Property(type: PropertyType.date)
@@ -27,6 +29,8 @@ extension ConvertPost on Post {
   PostModel toModel() => PostModel(
         id: id,
         title: title,
-        body: body ?? '',
+        author: author,
+        body: body,
+        date: date,
       );
 }

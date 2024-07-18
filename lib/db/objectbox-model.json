@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:6620560738468656888",
-      "lastPropertyId": "4:3894643405053845339",
+      "lastPropertyId": "5:2551922704780100958",
       "name": "Post",
       "properties": [
         {
@@ -28,6 +28,11 @@
           "id": "4:3894643405053845339",
           "name": "date",
           "type": 10
+        },
+        {
+          "id": "5:2551922704780100958",
+          "name": "author",
+          "type": 9
         }
       ],
       "relations": []

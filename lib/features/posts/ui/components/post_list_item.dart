@@ -45,12 +45,12 @@ class PostListItem extends StatelessWidget {
                             color: context.colors.foregroundPrimary,
                           ),
                         ),
-                        if (post.body.isNotEmpty) ...[
+                        if (post.body != null && post.body!.isNotEmpty) ...[
                           const SizedBox(
                             height: AppLayout.p2,
                           ),
                           Text(
-                            post.body,
+                            post.body!,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
                             style: context.typography.bodySmall.copyWith(
@@ -109,7 +109,7 @@ class PostListItem extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '17m ago • Alexander',
+                  '${post.timePassed()} ago • ${post.author}',
                   style: context.typography.labelSmall.copyWith(
                     color: context.colors.foregroundSecondary,
                   ),
