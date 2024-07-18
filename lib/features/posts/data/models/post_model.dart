@@ -8,15 +8,18 @@ class PostModel with _$PostModel {
   const factory PostModel({
     required int id,
     required String title,
-    required String body,
+    required String author,
+    String? body,
+    DateTime? date,
   }) = _PostModel;
 }
 
 extension ConvertPostModel on PostModel {
   Post toEntity() => Post(
         title,
+        author,
         id: id,
         body: body,
-        date: DateTime.now(),
+        date: date,
       );
 }

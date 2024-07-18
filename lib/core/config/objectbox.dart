@@ -27,9 +27,9 @@ class ObjectBox {
 
   void _putDemoData() {
     final demoPosts = [
-      Post('Post 1', body: 'Body 1'),
-      Post('Post 2', body: 'Body 2'),
-      Post('Post 3', body: 'Body 3'),
+      Post('Post 1', 'Author 1', body: 'Body 1'),
+      Post('Post 2', 'Author 2', body: 'Body 2'),
+      Post('Post 3', 'Author 3', body: 'Body 3'),
     ];
 
     store.box<Post>().putManyAsync(demoPosts);

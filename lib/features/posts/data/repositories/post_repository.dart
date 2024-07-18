@@ -21,7 +21,7 @@ class PostRepository {
 
   Either<Failure, int> createPost() {
     try {
-      final postToAdd = Post('New Post');
+      final postToAdd = Post('New Post', 'New Author');
       final res = box.put(postToAdd);
 
       return right(res);
