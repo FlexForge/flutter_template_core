@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
-import 'package:flutter_template_core/features/posts/ui/containers/post_list.dart';
+import 'package:flutter_template_core/features/showcase/ui/components/colors.dart';
+import 'package:flutter_template_core/features/showcase/ui/components/typography.dart';
 
-class PostListScreen extends ConsumerWidget {
-  const PostListScreen({super.key});
+class ShowcaseScreen extends ConsumerWidget {
+  const ShowcaseScreen({super.key});
 
-  static const routePath = '/';
-  static const routeName = 'postList';
+  static const routePath = '/showcase';
+  static const routeName = 'showcase';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // void create() {
-    //   ref.read(postCreateControllerProvider.notifier).handle();
-    // }
-
     return Scaffold(
       backgroundColor: context.colors.backgroundPrimary,
       body: CustomScrollView(
@@ -25,17 +22,22 @@ class PostListScreen extends ConsumerWidget {
         slivers: [
           CupertinoSliverNavigationBar(
             largeTitle: Text(
-              'Feed',
+              'Showcase',
               style: TextStyle(color: context.colors.foregroundPrimary),
             ),
             backgroundColor: context.colors.backgroundSecondary,
             border: null,
-            heroTag: 'library_screen',
+            heroTag: 'showcase_screen',
           ),
           const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppLayout.p4),
-              child: PostList(),
+            child: Column(
+              children: [
+                SizedBox(height: AppLayout.p6),
+                TypographyShowcase(),
+                SizedBox(height: AppLayout.p3),
+                ColorsShowcase(),
+                SizedBox(height: AppLayout.bottomBuffer),
+              ],
             ),
           ),
         ],
