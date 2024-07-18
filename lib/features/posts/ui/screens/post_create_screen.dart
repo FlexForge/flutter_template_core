@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
+import 'package:flutter_template_core/features/posts/ui/forms/post_create_form.dart';
 import 'package:go_router/go_router.dart';
 
 class PostCreateScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class PostCreateScreen extends StatelessWidget {
         border: null,
         padding: EdgeInsetsDirectional.zero,
       ),
-      body: const Placeholder(),
+      body: const PostCreateForm(),
     );
   }
 }

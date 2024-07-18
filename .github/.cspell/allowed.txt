@@ -45,3 +45,5 @@ cupertino
 buildlog
 lerp
 horiz
+autofocus
+autocorrect
