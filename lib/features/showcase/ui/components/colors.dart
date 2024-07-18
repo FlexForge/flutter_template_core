@@ -65,7 +65,7 @@ class ColorsShowcase extends StatelessWidget {
         child: LayoutGrid(
           columnSizes: [1.fr, 1.fr, 1.fr, 1.fr],
           rowSizes: const [auto, auto, auto, auto, auto, auto],
-          rowGap: AppLayout.p2, // equivalent to mainAxisSpacing
+          rowGap: AppLayout.p2,
           columnGap: AppLayout.p2,
           children: [
             colorContainer(
