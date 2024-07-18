@@ -32,6 +32,7 @@ extension GetTimePassed on PostModel {
     final duration = currentTime.difference(date!);
 
     final minutes = duration.inMinutes;
+    if (minutes == 0) return 'seconds';
     if (minutes < 60) return '${minutes}m';
 
     final hours = duration.inHours;
