@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
 import 'package:flutter_template_core/features/posts/ui/containers/post_list.dart';
+import 'package:flutter_template_core/features/posts/ui/screens/post_create_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class PostListScreen extends ConsumerWidget {
   const PostListScreen({super.key});
@@ -13,10 +15,6 @@ class PostListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // void create() {
-    //   ref.read(postCreateControllerProvider.notifier).handle();
-    // }
-
     return Scaffold(
       backgroundColor: context.colors.backgroundPrimary,
       body: CustomScrollView(
@@ -27,6 +25,13 @@ class PostListScreen extends ConsumerWidget {
             largeTitle: Text(
               'Feed',
               style: TextStyle(color: context.colors.foregroundPrimary),
+            ),
+            trailing: IconButton(
+              onPressed: () => context.goNamed(PostCreateScreen.routeName),
+              icon: const Icon(
+                Icons.add,
+                size: 24,
+              ),
             ),
             backgroundColor: context.colors.backgroundSecondary,
             border: null,
