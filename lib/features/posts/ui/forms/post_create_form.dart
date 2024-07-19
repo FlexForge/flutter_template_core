@@ -41,8 +41,7 @@ class PostCreateForm extends ConsumerWidget {
                 enabled: form.currentForm.valid,
                 onPressed: () =>
                     ref.read(postFormControllerProvider.notifier).create(),
-                label: 'Next',
-                icon: Icons.keyboard_arrow_right,
+                label: 'Create Post',
                 backgroundColor: context.colors.foregroundPrimary,
                 foregroundColor: context.colors.backgroundPrimary,
               ),

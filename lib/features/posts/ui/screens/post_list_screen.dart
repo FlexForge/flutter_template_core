@@ -40,7 +40,10 @@ class PostListScreen extends ConsumerWidget {
           ),
           CupertinoSliverRefreshControl(
             onRefresh: () async {
-              return await ref.refresh(postListControllerProvider);
+              await Future<void>.delayed(
+                const Duration(milliseconds: 500),
+              );
+              ref.invalidate(postListControllerProvider);
             },
           ),
           const SliverToBoxAdapter(
