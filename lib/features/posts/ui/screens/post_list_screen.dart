@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
 import 'package:flutter_template_core/features/posts/ui/containers/post_list.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_create_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -36,6 +37,11 @@ class PostListScreen extends ConsumerWidget {
             backgroundColor: context.colors.backgroundSecondary,
             border: null,
             heroTag: 'library_screen',
+          ),
+          CupertinoSliverRefreshControl(
+            onRefresh: () async {
+              return await ref.refresh(postListControllerProvider);
+            },
           ),
           const SliverToBoxAdapter(
             child: Padding(
