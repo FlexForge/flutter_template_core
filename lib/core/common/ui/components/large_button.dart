@@ -9,9 +9,11 @@ class LargeButton extends StatelessWidget {
     this.onPressed,
     this.backgroundColor,
     this.foregroundColor,
+    this.borderColor,
     this.padding,
     this.borderRadius,
     this.enabled = true,
+    this.expanded = false,
     super.key,
   });
 
@@ -20,9 +22,11 @@ class LargeButton extends StatelessWidget {
   final void Function()? onPressed;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final Color? borderColor;
   final EdgeInsets? padding;
   final double? borderRadius;
   final bool enabled;
+  final bool expanded;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +35,18 @@ class LargeButton extends StatelessWidget {
       style: TextButton.styleFrom(
         padding: EdgeInsets.zero,
         minimumSize: Size.zero,
-        foregroundColor: foregroundColor ?? context.colors.backgroundPrimary,
-        backgroundColor: backgroundColor ?? context.colors.backgroundSecondary,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        foregroundColor: foregroundColor ?? context.colors.foregroundPrimary,
+        backgroundColor: backgroundColor ?? context.colors.backgroundPrimary,
         disabledForegroundColor: context.colors.foregroundTertiary,
         disabledBackgroundColor: context.colors.foregroundQuaternary,
         shape: RoundedRectangleBorder(
           borderRadius:
               BorderRadius.circular(borderRadius ?? AppLayout.cornerRadius),
+          side: BorderSide(
+            color: borderColor ?? Colors.transparent,
+            width: 2,
+          ),
         ),
       ),
       child: Padding(
@@ -45,11 +54,14 @@ class LargeButton extends StatelessWidget {
             EdgeInsets.fromLTRB(
               label == null ? AppLayout.p3 : AppLayout.p4,
               AppLayout.p3,
-              label == null ? AppLayout.p3 : AppLayout.p2,
+              label == null
+                  ? AppLayout.p3
+                  : (icon == null ? AppLayout.p4 : AppLayout.p2),
               AppLayout.p3,
             ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (label != null)
               Text(

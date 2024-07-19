@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/showcase/ui/components/buttons.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/colors.dart';
+import 'package:flutter_template_core/features/showcase/ui/components/forms.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/typography.dart';
 
 class ShowcaseScreen extends ConsumerWidget {
@@ -36,6 +38,10 @@ class ShowcaseScreen extends ConsumerWidget {
                 TypographyShowcase(),
                 SizedBox(height: AppLayout.p3),
                 ColorsShowcase(),
+                SizedBox(height: AppLayout.p6),
+                LargeButtonShowcase(),
+                SizedBox(height: AppLayout.p3),
+                FormShowcase(),
                 SizedBox(height: AppLayout.bottomBuffer),
               ],
             ),
