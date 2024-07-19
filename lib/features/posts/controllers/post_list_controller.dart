@@ -12,4 +12,8 @@ class PostListController extends _$PostListController {
 
     return res.fold((l) => throw l, (r) => r);
   }
+
+  void addPost(PostModel entity) {
+    state = [entity, ...state];
+  }
 }
