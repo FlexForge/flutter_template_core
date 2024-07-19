@@ -47,10 +47,7 @@ class PostListScreen extends ConsumerWidget {
             },
           ),
           const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppLayout.p4),
-              child: PostList(),
-            ),
+            child: PostList(),
           ),
         ],
       ),
