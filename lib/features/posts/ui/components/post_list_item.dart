@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
+import 'package:flutter_template_core/core/common/ui/components/flex_alert_dialog.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_delete_controller.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_edit_screen.dart';
 import 'package:go_router/go_router.dart';
 
 enum PostType { large, wide }
 
-class PostListItem extends StatelessWidget {
+class PostListItem extends ConsumerWidget {
   const PostListItem({
     required this.post,
     this.type = PostType.wide,
@@ -19,7 +23,17 @@ class PostListItem extends StatelessWidget {
   final PostType type;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    void deletePost() {
+      ref
+          .read(postDeleteControllerProvider(post.id.toString()).notifier)
+          .handle();
+
+      ref.read(postListControllerProvider.notifier).deletePost(post);
+
+      context.pop();
+    }
+
     return SwipeActionCell(
       key: ObjectKey(post.id),
       backgroundColor: context.colors.backgroundPrimary,
@@ -28,7 +42,13 @@ class PostListItem extends StatelessWidget {
           content: _getIconButton(context.colors.red, Icons.delete),
           color: Colors.transparent,
           widthSpace: 64,
-          onTap: (handler) {},
+          onTap: (handler) async => showFlexAlertDialog(
+            context,
+            title: 'Delete Post',
+            description: 'Are you sure you want to delete ${post.title}? '
+                'This action cannot be undone.',
+            onPressed: deletePost,
+          ),
         ),
         SwipeAction(
           content: _getIconButton(context.colors.blue, Icons.edit),

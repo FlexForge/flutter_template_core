@@ -17,6 +17,10 @@ class PostListController extends _$PostListController {
     state = [entity, ...state];
   }
 
+  void deletePost(PostModel entity) {
+    state = state.where((e) => e.id != entity.id).toList();
+  }
+
   void updatePost(PostModel entity) {
     final newState = [...state];
     final index = newState.indexWhere((e) => e.id == entity.id);

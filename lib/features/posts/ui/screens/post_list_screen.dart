@@ -42,7 +42,7 @@ class PostListScreen extends ConsumerWidget {
               await Future<void>.delayed(
                 const Duration(milliseconds: 500),
               );
-              ref.invalidate(postListControllerProvider);
+              return ref.refresh(postListControllerProvider);
             },
           ),
           const SliverToBoxAdapter(
