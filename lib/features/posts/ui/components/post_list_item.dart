@@ -3,6 +3,8 @@ import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
+import 'package:flutter_template_core/features/posts/ui/screens/post_edit_screen.dart';
+import 'package:go_router/go_router.dart';
 
 enum PostType { large, wide }
 
@@ -32,7 +34,14 @@ class PostListItem extends StatelessWidget {
           content: _getIconButton(context.colors.blue, Icons.edit),
           color: Colors.transparent,
           widthSpace: 64,
-          onTap: (handler) {},
+          onTap: (handler) {
+            context.goNamed(
+              PostEditScreen.routeName,
+              pathParameters: {
+                'pid': post.id.toString(),
+              },
+            );
+          },
         ),
       ],
       child: Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template_core/core/common/ui/screens/error_screen.dart';
 import 'package:flutter_template_core/core/common/ui/screens/main_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_create_screen.dart';
+import 'package:flutter_template_core/features/posts/ui/screens/post_edit_screen.dart';
 import 'package:go_router/go_router.dart';
 
 /// Main router for the Example app
@@ -25,6 +26,13 @@ final router = GoRouter(
           path: PostCreateScreen.routePath,
           name: PostCreateScreen.routeName,
           builder: (context, state) => const PostCreateScreen(),
+        ),
+        GoRoute(
+          path: PostEditScreen.routePath,
+          name: PostEditScreen.routeName,
+          builder: (context, state) => PostEditScreen(
+            id: state.pathParameters['pid']!,
+          ),
         ),
       ],
     ),
