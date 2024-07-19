@@ -45,9 +45,7 @@ class PostListScreen extends ConsumerWidget {
               return ref.refresh(postListControllerProvider);
             },
           ),
-          const SliverFillRemaining(
-            child: PostList(),
-          ),
+          const PostList(),
         ],
       ),
     );
