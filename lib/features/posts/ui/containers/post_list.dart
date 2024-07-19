@@ -13,43 +13,52 @@ class PostList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(postListControllerProvider);
 
-    return ColoredBox(
-      color: context.colors.backgroundPrimary,
-      child: posts.isEmpty
-          ? const Padding(
-              padding: EdgeInsets.all(4),
-              child: Center(
-                child: Text('No items found'),
-              ),
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return posts.isEmpty
+        ? Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: AppLayout.p6),
-                ...posts.mapWithIndex(
-                  (post, index) {
-                    if (index == 0) {
-                      return Column(
-                        children: [
-                          PostListItem(
-                            post: post,
-                            type: PostType.large,
-                          ),
-                          const SizedBox(height: AppLayout.p3),
-                        ],
-                      );
-                    }
-
-                    return Column(
-                      children: [
-                        PostListItem(post: post),
-                        const SizedBox(height: AppLayout.p3),
-                      ],
-                    );
-                  },
+                Icon(
+                  Icons.search_off_rounded,
+                  color: context.colors.foregroundSecondary,
+                  size: 48,
+                ),
+                Text(
+                  'No Posts Found',
+                  style: context.typography.headlineMedium.copyWith(
+                    color: context.colors.foregroundSecondary,
+                  ),
                 ),
               ],
             ),
-    );
+          )
+        : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: AppLayout.p6),
+              ...posts.mapWithIndex(
+                (post, index) {
+                  if (index == 0) {
+                    return Column(
+                      children: [
+                        PostListItem(
+                          post: post,
+                          type: PostType.large,
+                        ),
+                        const SizedBox(height: AppLayout.p3),
+                      ],
+                    );
+                  }
+
+                  return Column(
+                    children: [
+                      PostListItem(post: post),
+                      const SizedBox(height: AppLayout.p3),
+                    ],
+                  );
+                },
+              ),
+            ],
+          );
   }
 }
