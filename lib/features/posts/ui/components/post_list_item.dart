@@ -39,7 +39,7 @@ class PostListItem extends ConsumerWidget {
       backgroundColor: context.colors.backgroundPrimary,
       trailingActions: [
         SwipeAction(
-          content: _getIconButton(context.colors.red, Icons.delete),
+          content: getIconButton(context.colors.red, Icons.delete),
           color: Colors.transparent,
           widthSpace: 64,
           onTap: (handler) async => showFlexAlertDialog(
@@ -51,7 +51,7 @@ class PostListItem extends ConsumerWidget {
           ),
         ),
         SwipeAction(
-          content: _getIconButton(context.colors.blue, Icons.edit),
+          content: getIconButton(context.colors.blue, Icons.edit),
           color: Colors.transparent,
           widthSpace: 64,
           onTap: (handler) {
@@ -177,23 +177,23 @@ class PostListItem extends ConsumerWidget {
       ),
     );
   }
+}
 
-  Widget _getIconButton(Color color, IconData icon) {
-    return Row(
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: color,
-          ),
-          child: Icon(
-            icon,
-            color: Colors.white,
-          ),
+Widget getIconButton(Color color, IconData icon) {
+  return Row(
+    children: [
+      Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          color: color,
         ),
-      ],
-    );
-  }
+        child: Icon(
+          icon,
+          color: Colors.white,
+        ),
+      ),
+    ],
+  );
 }

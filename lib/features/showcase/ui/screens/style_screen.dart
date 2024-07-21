@@ -6,6 +6,7 @@ import 'package:flutter_template_core/core/theme/app_layout.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/buttons.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/colors.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/forms.dart';
+import 'package:flutter_template_core/features/showcase/ui/components/slidable.dart';
 import 'package:flutter_template_core/features/showcase/ui/components/typography.dart';
 
 class ShowcaseScreen extends ConsumerWidget {
@@ -42,6 +43,8 @@ class ShowcaseScreen extends ConsumerWidget {
                 LargeButtonShowcase(),
                 SizedBox(height: AppLayout.p3),
                 FormShowcase(),
+                SizedBox(height: AppLayout.p3),
+                SlidableShowcase(),
                 SizedBox(height: AppLayout.bottomBuffer),
               ],
             ),
