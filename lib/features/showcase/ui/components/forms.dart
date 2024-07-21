@@ -44,7 +44,7 @@ class FormShowcase extends StatelessWidget {
                         'The textField cannot exceed '
                         '$textAreaMaxLength characters',
                   },
-                )
+                ),
               ],
             );
           },

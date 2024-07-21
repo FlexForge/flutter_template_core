@@ -97,7 +97,7 @@ class LargeButtonShowcase extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
