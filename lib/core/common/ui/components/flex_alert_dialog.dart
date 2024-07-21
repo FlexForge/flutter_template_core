@@ -59,7 +59,7 @@ Future<void> showFlexAlertDialog(
         actions: <Widget>[
           LargeButton(
             label: cancelLabel ?? 'Cancel',
-            foregroundColor: context.colors.foregroundPrimary,
+            backgroundColor: Colors.transparent,
             padding: const EdgeInsets.symmetric(
               horizontal: AppLayout.p6,
               vertical: AppLayout.p3,
