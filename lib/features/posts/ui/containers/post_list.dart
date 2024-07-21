@@ -14,51 +14,55 @@ class PostList extends ConsumerWidget {
     final posts = ref.watch(postListControllerProvider);
 
     return posts.isEmpty
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.search_off_rounded,
-                  color: context.colors.foregroundSecondary,
-                  size: 48,
-                ),
-                Text(
-                  'No Posts Found',
-                  style: context.typography.headlineMedium.copyWith(
+        ? SliverFillRemaining(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.search_off_rounded,
                     color: context.colors.foregroundSecondary,
+                    size: 48,
                   ),
-                ),
-              ],
+                  Text(
+                    'No Posts Found',
+                    style: context.typography.headlineMedium.copyWith(
+                      color: context.colors.foregroundSecondary,
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: AppLayout.p6),
-              ...posts.mapWithIndex(
-                (post, index) {
-                  if (index == 0) {
+        : SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: AppLayout.p6),
+                ...posts.mapWithIndex(
+                  (post, index) {
+                    if (index == 0) {
+                      return Column(
+                        children: [
+                          PostListItem(
+                            post: post,
+                            type: PostType.large,
+                          ),
+                          const SizedBox(height: AppLayout.p3),
+                        ],
+                      );
+                    }
+
                     return Column(
                       children: [
-                        PostListItem(
-                          post: post,
-                          type: PostType.large,
-                        ),
+                        PostListItem(post: post),
                         const SizedBox(height: AppLayout.p3),
                       ],
                     );
-                  }
-
-                  return Column(
-                    children: [
-                      PostListItem(post: post),
-                      const SizedBox(height: AppLayout.p3),
-                    ],
-                  );
-                },
-              ),
-            ],
+                  },
+                ),
+              ],
+            ),
           );
   }
 }

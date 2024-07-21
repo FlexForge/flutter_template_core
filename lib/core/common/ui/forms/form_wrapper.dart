@@ -40,12 +40,23 @@ class FormWrapper extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppLayout.p4,
-                      vertical: AppLayout.p2,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppLayout.p4,
+                    vertical: AppLayout.p2,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [0, 0.5],
+                      colors: [
+                        context.colors.backgroundSecondary.withOpacity(0),
+                        context.colors.backgroundSecondary,
+                      ],
                     ),
+                  ),
+                  child: SafeArea(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [actionButton!],
