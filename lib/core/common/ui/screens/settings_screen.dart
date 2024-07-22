@@ -61,8 +61,8 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: AppLayout.p6),
                 const Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: AppLayout.p4),
-                  child:  ThemeSelector(),
+                  padding: EdgeInsets.symmetric(horizontal: AppLayout.p4),
+                  child: ThemeSelector(),
                 ),
               ],
             ),
