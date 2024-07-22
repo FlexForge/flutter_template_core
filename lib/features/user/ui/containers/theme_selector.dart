@@ -21,21 +21,27 @@ class ThemeSelector extends ConsumerWidget {
           ThemeDisplay(
             theme: ThemeMode.system,
             label: 'System',
-            onPressed: () => {},
+            onPressed: () => ref
+                .read(themeControllerProvider.notifier)
+                .handle(ThemeMode.system),
             isSelected: theme == ThemeMode.system,
           ),
           const SizedBox(width: AppLayout.p4),
           ThemeDisplay(
             theme: ThemeMode.light,
             label: 'Light',
-            onPressed: () => {},
+            onPressed: () => ref
+                .read(themeControllerProvider.notifier)
+                .handle(ThemeMode.light),
             isSelected: theme == ThemeMode.light,
           ),
           const SizedBox(width: AppLayout.p4),
           ThemeDisplay(
             theme: ThemeMode.dark,
             label: 'Dark',
-            onPressed: () => {},
+            onPressed: () => ref
+                .read(themeControllerProvider.notifier)
+                .handle(ThemeMode.dark),
             isSelected: theme == ThemeMode.dark,
           ),
         ],

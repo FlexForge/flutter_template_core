@@ -10,23 +10,14 @@ class ThemeController extends _$ThemeController {
   ThemeMode build() {
     final res = ref.watch(userRepositoryProvider).getUser();
 
-    final user = res.fold(
-      (l) => throw l,
-      (r) => r,
-    );
+    final user = res.fold((l) => throw l, (r) => r);
 
     return user.preferredTheme;
   }
 
-  // Future<void> handle(ThemeMode theme) async {
-  //   state = const AsyncValue.loading();
+  void handle(ThemeMode theme) {
+    final res = ref.read(userRepositoryProvider).updateTheme(theme: theme);
 
-  //   final res =
-  //       await ref.read(userRepositoryProvider).updateTheme(theme: theme);
-
-  //   state = res.fold(
-  //     (l) => AsyncValue.error(l.error, StackTrace.current),
-  //     AsyncValue.data,
-  //   );
-  // }
+    state = res.fold((l) => throw l, (r) => r);
+  }
 }
