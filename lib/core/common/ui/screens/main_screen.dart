@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template_core/core/common/ui/components/navigation_bar.dart';
-import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
+import 'package:flutter_template_core/core/common/ui/screens/settings_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_list_screen.dart';
 import 'package:flutter_template_core/features/showcase/ui/screens/style_screen.dart';
 
@@ -25,12 +25,10 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: IndexedStack(
         index: _selectedIndex,
-        children: <Widget>[
-          const PostListScreen(),
-          const ShowcaseScreen(),
-          Scaffold(
-            backgroundColor: context.colors.backgroundPrimary,
-          ),
+        children: const <Widget>[
+          PostListScreen(),
+          ShowcaseScreen(),
+          SettingsScreen(),
         ],
       ),
       bottomNavigationBar: MainNavigationBar(

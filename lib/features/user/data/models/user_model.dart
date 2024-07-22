@@ -1,5 +1,6 @@
 import 'package:flutter_template_core/features/user/data/db/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:intl/intl.dart';
 
 part 'user_model.freezed.dart';
 
@@ -28,4 +29,12 @@ extension ConvertUserModel on UserModel {
         updatedAt: updatedAt,
         createdAt: createdAt,
       );
+}
+
+extension FormatCreatedDate on UserModel {
+  String formatCreatedDate() {
+    if (createdAt == null) return '';
+
+    return DateFormat.yMMMMd().format(createdAt!);
+  }
 }
