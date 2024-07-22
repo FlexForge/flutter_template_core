@@ -13,9 +13,9 @@ Future<ProviderContainer> bootstrap() async {
     observers: [if (F.appFlavor == Flavor.dev) _Logger()],
   );
 
-  objectBox = await ObjectBox.create();
-
   await initializeProviders(container);
+
+  objectBox = await ObjectBox.create();
 
   return container;
 }

@@ -141,12 +141,9 @@ class OnboardingStepOne extends ConsumerWidget {
                 child: LargeButton(
                   label: 'Get started now',
                   expanded: true,
-                  onPressed: () {
-                    ref
-                        .read(onboardingControllerProvider.notifier)
-                        .setIsFirstTime(isFirstTime: false);
-                    context.pushReplacement('/');
-                  },
+                  onPressed: () => ref
+                      .read(onboardingControllerProvider.notifier)
+                      .setIsFirstTime(isFirstTime: false),
                   backgroundColor: context.colors.foregroundPrimary,
                   foregroundColor: context.colors.backgroundPrimary,
                 ),
