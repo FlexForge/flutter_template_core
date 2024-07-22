@@ -8,7 +8,7 @@ class OnboardingStepOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget _bulletPoint(String text) => Row(
+    Widget bulletPoint(String text) => Row(
           children: [
             const Icon(
               Icons.circle,
@@ -44,7 +44,7 @@ class OnboardingStepOne extends StatelessWidget {
                     'flex starter',
                     style: context.typography.headlineMedium
                         .copyWith(fontWeight: FontWeight.w500),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: AppLayout.p6 * 2),
@@ -60,49 +60,57 @@ class OnboardingStepOne extends StatelessWidget {
                   children: [
                     TextSpan(
                       text: 'A ',
-                      style: context.typography.bodyLarge,
+                      style: context.typography.bodyLarge.copyWith(
+                        color: context.colors.foregroundPrimary,
+                      ),
                     ),
                     TextSpan(
                       text: 'complete and functional ',
                       style: context.typography.bodyLarge.copyWith(
+                        color: context.colors.foregroundPrimary,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                     TextSpan(
                       text: 'starting point for ',
-                      style: context.typography.bodyLarge,
+                      style: context.typography.bodyLarge.copyWith(
+                        color: context.colors.foregroundPrimary,
+                      ),
                     ),
                     TextSpan(
                       text: 'your next flutter app ',
                       style: context.typography.bodyLarge.copyWith(
+                        color: context.colors.foregroundPrimary,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
                     TextSpan(
                       text: 'that includes:',
-                      style: context.typography.bodyLarge,
+                      style: context.typography.bodyLarge.copyWith(
+                        color: context.colors.foregroundPrimary,
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: AppLayout.p6),
-              _bulletPoint('built using clean architecture'),
+              bulletPoint('built using clean architecture'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('local first data with objectbox'),
+              bulletPoint('local first data with objectbox'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('support for multiple build environments'),
+              bulletPoint('support for multiple build environments'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('a complete navigation solution'),
+              bulletPoint('a complete navigation solution'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('100% test coverage with flutter-test'),
+              bulletPoint('100% test coverage with flutter-test'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('workflows for building, and releasing'),
+              bulletPoint('workflows for building, and releasing'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('form handling with validations'),
+              bulletPoint('form handling with validations'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('multiple language localization'),
+              bulletPoint('multiple language localization'),
               const SizedBox(height: AppLayout.p2),
-              _bulletPoint('dark and light themes'),
+              bulletPoint('dark and light themes'),
               const SizedBox(height: AppLayout.p6 * 2),
             ],
           ),
@@ -134,10 +142,10 @@ class OnboardingStepOne extends StatelessWidget {
                   backgroundColor: context.colors.foregroundPrimary,
                   foregroundColor: context.colors.backgroundPrimary,
                 ),
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }
