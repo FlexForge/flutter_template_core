@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_template_core/features/user/data/models/user_model.dart';
 import 'package:objectbox/objectbox.dart';
 
@@ -8,6 +9,7 @@ class User {
     this.lastName,
     this.email, {
     this.id = 0,
+    this.preferredTheme = ThemeMode.system,
     this.userName,
     this.birthDate,
     this.updatedAt,
@@ -25,10 +27,31 @@ class User {
   @Property(type: PropertyType.date)
   DateTime? birthDate;
 
+  @Transient()
+  ThemeMode preferredTheme;
+
+  int get dbPreferredTheme {
+    _ensureStableEnumValues();
+    return preferredTheme.index;
+  }
+
+  set dbPreferredTheme(int value) {
+    _ensureStableEnumValues();
+    preferredTheme = value >= 0 && value < ThemeMode.values.length
+        ? ThemeMode.values[value]
+        : ThemeMode.system;
+  }
+
   @Property(type: PropertyType.date)
   DateTime? updatedAt;
   @Property(type: PropertyType.date)
   DateTime? createdAt;
+
+  void _ensureStableEnumValues() {
+    assert(ThemeMode.system.index == 0, 'Enum values changed');
+    assert(ThemeMode.light.index == 1, 'Enum values changed');
+    assert(ThemeMode.dark.index == 2, 'Enum values changed');
+  }
 }
 
 extension ConvertUser on User {
@@ -39,6 +62,7 @@ extension ConvertUser on User {
         email: email,
         birthDate: birthDate,
         userName: userName,
+        preferredTheme: preferredTheme,
         updatedAt: updatedAt,
         createdAt: createdAt,
       );

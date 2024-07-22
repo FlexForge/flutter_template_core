@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_template_core/features/user/data/db/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -11,6 +12,7 @@ class UserModel with _$UserModel {
     required String firstName,
     required String lastName,
     required String email,
+    required ThemeMode preferredTheme,
     DateTime? birthDate,
     String? userName,
     DateTime? updatedAt,
@@ -26,6 +28,7 @@ extension ConvertUserModel on UserModel {
         id: id,
         userName: userName,
         birthDate: birthDate,
+        preferredTheme: preferredTheme,
         updatedAt: updatedAt,
         createdAt: createdAt,
       );

@@ -5,6 +5,7 @@ import 'package:flutter_template_core/core/common/ui/components/flex_list_tile.d
 import 'package:flutter_template_core/core/common/ui/components/section.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/user/ui/containers/theme_selector.dart';
 import 'package:flutter_template_core/features/user/ui/containers/user_info_card.dart';
 import 'package:flutter_template_core/features/user/ui/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -57,6 +58,11 @@ class SettingsScreen extends ConsumerWidget {
                       ],
                     ),
                   ),
+                ),
+                const SizedBox(height: AppLayout.p6),
+                const Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: AppLayout.p4),
+                  child:  ThemeSelector(),
                 ),
               ],
             ),
