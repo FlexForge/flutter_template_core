@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipe_action_cell/core/swipe_action_navigator_observer.dart';
 import 'package:flutter_template_core/core/common/ui/screens/error_screen.dart';
 import 'package:flutter_template_core/core/common/ui/screens/main_screen.dart';
+import 'package:flutter_template_core/features/onboarding/ui/screens/onboarding_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_create_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_edit_screen.dart';
 import 'package:flutter_template_core/features/user/ui/screens/profile_screen.dart';
@@ -45,11 +46,19 @@ final router = GoRouter(
         ),
       ],
     ),
+    GoRoute(
+      path: '/${OnboardingScreen.routePath}',
+      name: OnboardingScreen.routePath,
+      builder: (context, state) => const OnboardingScreen(),
+    ),
   ],
   observers: [
     routeObserver,
     SwipeActionNavigatorObserver(),
   ],
+  redirect: (context, state) {
+    return '/${OnboardingScreen.routePath}';
+  },
   debugLogDiagnostics: true,
   errorBuilder: (context, state) =>
       ErrorScreen(message: state.error.toString()),
