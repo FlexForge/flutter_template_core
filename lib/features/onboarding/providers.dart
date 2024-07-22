@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_template_core/core/config/providers.dart';
 import 'package:flutter_template_core/core/utils/failure.dart';
 import 'package:flutter_template_core/features/onboarding/data/db/is_first_time_entity.dart';
@@ -19,3 +20,5 @@ OnboardingRepository onboardingRepository(OnboardingRepositoryRef ref) {
     IsFirstTimeData(prefs),
   );
 }
+
+final onboardingListener = ValueNotifier<bool>(true);

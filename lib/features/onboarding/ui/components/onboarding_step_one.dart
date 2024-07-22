@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/onboarding/controllers/onboarding_controller.dart';
+import 'package:go_router/go_router.dart';
 
-class OnboardingStepOne extends StatelessWidget {
+class OnboardingStepOne extends ConsumerWidget {
   const OnboardingStepOne({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Widget bulletPoint(String text) => Row(
           children: [
             const Icon(
@@ -138,7 +141,12 @@ class OnboardingStepOne extends StatelessWidget {
                 child: LargeButton(
                   label: 'Get started now',
                   expanded: true,
-                  onPressed: () {},
+                  onPressed: () {
+                    ref
+                        .read(onboardingControllerProvider.notifier)
+                        .setIsFirstTime(isFirstTime: false);
+                    context.pushReplacement('/');
+                  },
                   backgroundColor: context.colors.foregroundPrimary,
                   foregroundColor: context.colors.backgroundPrimary,
                 ),
