@@ -8,9 +8,7 @@ import 'package:path_provider/path_provider.dart';
 
 class ObjectBox {
   ObjectBox._create(this.store) {
-    final test = onboardingListener.value;
-
-    if (onboardingListener.value) {
+    if (isFirstLoadListener.value) {
       _putInitialPostData();
       _putInitialUserData();
     }

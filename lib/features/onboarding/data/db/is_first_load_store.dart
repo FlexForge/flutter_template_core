@@ -3,12 +3,12 @@ import 'package:fpdart/fpdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Manage token in device storage
-class IsFirstTimeData {
-  IsFirstTimeData(this._prefs);
+class IsFirstLoadStore {
+  IsFirstLoadStore(this._prefs);
 
   final SharedPreferences _prefs;
 
-  static const _key = 'is_first_time';
+  static const _key = 'is_first_load';
 
   /// get the token from the device storage
   Either<Failure, bool> get() {
@@ -21,10 +21,10 @@ class IsFirstTimeData {
   }
 
   /// Store token in device storage
-  Future<bool> store({required bool isFirstTime}) async {
+  Future<bool> store({required bool isFirstLoad}) async {
     return _prefs.setBool(
       _key,
-      isFirstTime,
+      isFirstLoad,
     );
   }
 }

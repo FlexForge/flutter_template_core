@@ -4,7 +4,6 @@ import 'package:flutter_template_core/core/common/ui/components/large_button.dar
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
 import 'package:flutter_template_core/features/onboarding/controllers/onboarding_controller.dart';
-import 'package:go_router/go_router.dart';
 
 class OnboardingStepOne extends ConsumerWidget {
   const OnboardingStepOne({super.key});
@@ -143,7 +142,7 @@ class OnboardingStepOne extends ConsumerWidget {
                   expanded: true,
                   onPressed: () => ref
                       .read(onboardingControllerProvider.notifier)
-                      .setIsFirstTime(isFirstTime: false),
+                      .setIsFirstLoad(isFirstLoad: false),
                   backgroundColor: context.colors.foregroundPrimary,
                   foregroundColor: context.colors.backgroundPrimary,
                 ),

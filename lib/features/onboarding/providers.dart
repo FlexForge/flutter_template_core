@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_template_core/core/config/providers.dart';
 import 'package:flutter_template_core/core/utils/failure.dart';
-import 'package:flutter_template_core/features/onboarding/data/db/is_first_time_entity.dart';
+import 'package:flutter_template_core/features/onboarding/data/db/is_first_load_store.dart';
 import 'package:flutter_template_core/features/onboarding/data/repositories/onboarding_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -17,8 +17,8 @@ OnboardingRepository onboardingRepository(OnboardingRepositoryRef ref) {
   }
 
   return OnboardingRepository(
-    IsFirstTimeData(prefs),
+    IsFirstLoadStore(prefs),
   );
 }
 
-final onboardingListener = ValueNotifier<bool>(true);
+final isFirstLoadListener = ValueNotifier<bool>(true);

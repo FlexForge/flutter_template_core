@@ -58,7 +58,7 @@ final router = GoRouter(
     SwipeActionNavigatorObserver(),
   ],
   redirect: (context, state) {
-    final isFirstTime = onboardingListener.value;
+    final isFirstTime = isFirstLoadListener.value;
     final goingToOnboard =
         state.matchedLocation.contains('/${OnboardingScreen.routePath}');
 
@@ -69,7 +69,7 @@ final router = GoRouter(
 
     return null;
   },
-  refreshListenable: onboardingListener,
+  refreshListenable: isFirstLoadListener,
   debugLogDiagnostics: true,
   errorBuilder: (context, state) =>
       ErrorScreen(message: state.error.toString()),

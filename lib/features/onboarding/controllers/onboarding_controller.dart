@@ -7,26 +7,26 @@ part 'onboarding_controller.g.dart';
 class OnboardingController extends _$OnboardingController {
   @override
   bool build() {
-    final res = ref.watch(onboardingRepositoryProvider).getIsFirstTime();
+    final res = ref.watch(onboardingRepositoryProvider).getIsFirstLoad();
 
-    final isFirstTime = res.fold((l) => throw l, (r) => r);
+    final isFirstLoad = res.fold((l) => throw l, (r) => r);
 
-    _updateOnboardState(isFirstTime);
+    _updateIsFirstLoad(isFirstLoad);
 
-    return isFirstTime;
+    return isFirstLoad;
   }
 
-  Future<void> setIsFirstTime({required bool isFirstTime}) async {
+  Future<void> setIsFirstLoad({required bool isFirstLoad}) async {
     final res = await ref
         .read(onboardingRepositoryProvider)
-        .setIsFirstTime(isFirstTime: isFirstTime);
+        .setIsFirstLoad(isFirstLoad: isFirstLoad);
 
-    _updateOnboardState(isFirstTime);
+    _updateIsFirstLoad(isFirstLoad);
 
     state = res.fold((l) => throw l, (r) => r);
   }
 
-  void _updateOnboardState(bool? isFirstTime) {
-    onboardingListener.value = isFirstTime ?? true;
+  void _updateIsFirstLoad(bool? isFirstLoad) {
+    isFirstLoadListener.value = isFirstLoad ?? true;
   }
 }

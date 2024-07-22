@@ -1,15 +1,15 @@
 import 'package:flutter_template_core/core/utils/failure.dart';
-import 'package:flutter_template_core/features/onboarding/data/db/is_first_time_entity.dart';
+import 'package:flutter_template_core/features/onboarding/data/db/is_first_load_store.dart';
 import 'package:fpdart/fpdart.dart';
 
 class OnboardingRepository {
-  OnboardingRepository(this.isFirstTimeDatabase);
+  OnboardingRepository(this.isFirstLoadStore);
 
-  final IsFirstTimeData isFirstTimeDatabase;
+  final IsFirstLoadStore isFirstLoadStore;
 
-  Either<Failure, bool> getIsFirstTime() {
+  Either<Failure, bool> getIsFirstLoad() {
     try {
-      final res = isFirstTimeDatabase.get();
+      final res = isFirstLoadStore.get();
       if (res.isLeft()) {
         return left(const Failure.empty());
       }
@@ -20,11 +20,11 @@ class OnboardingRepository {
     }
   }
 
-  Future<Either<Failure, bool>> setIsFirstTime({
-    required bool isFirstTime,
+  Future<Either<Failure, bool>> setIsFirstLoad({
+    required bool isFirstLoad,
   }) async {
     try {
-      await isFirstTimeDatabase.store(isFirstTime: isFirstTime);
+      await isFirstLoadStore.store(isFirstLoad: isFirstLoad);
 
       return right(true);
     } catch (_) {
