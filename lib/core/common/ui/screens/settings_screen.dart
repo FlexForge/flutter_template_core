@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template_core/core/common/ui/components/flex_list_tile.dart';
+import 'package:flutter_template_core/core/common/ui/components/section.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
+import 'package:flutter_template_core/core/theme/app_layout.dart';
 import 'package:flutter_template_core/features/user/ui/containers/user_info_card.dart';
+import 'package:flutter_template_core/features/user/ui/screens/profile_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -27,10 +33,32 @@ class SettingsScreen extends ConsumerWidget {
             border: null,
             heroTag: 'settings_screen',
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Column(
               children: [
-                UserInfoCard(),
+                const UserInfoCard(),
+                const SizedBox(height: AppLayout.p6),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
+                  child: Section(
+                    header: 'General',
+                    body: Column(
+                      children: [
+                        FlexListTile(
+                          title: Text(
+                            'Profile',
+                            style: context.typography.bodyMedium.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          icon: Icons.person,
+                          trailingIcon: Icons.chevron_right,
+                          onTap: () => context.goNamed(ProfileScreen.routeName),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
