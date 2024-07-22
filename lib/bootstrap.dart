@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/config/objectbox.dart';
+import 'package:flutter_template_core/core/config/providers.dart';
 import 'package:flutter_template_core/flavors.dart';
 
 late ObjectBox objectBox;
@@ -13,6 +14,8 @@ Future<ProviderContainer> bootstrap() async {
   );
 
   objectBox = await ObjectBox.create();
+
+  await initializeProviders(container);
 
   return container;
 }
