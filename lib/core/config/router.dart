@@ -4,6 +4,7 @@ import 'package:flutter_template_core/core/common/ui/screens/error_screen.dart';
 import 'package:flutter_template_core/core/common/ui/screens/main_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_create_screen.dart';
 import 'package:flutter_template_core/features/posts/ui/screens/post_edit_screen.dart';
+import 'package:flutter_template_core/features/user/ui/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
 /// Main router for the Example app
@@ -34,6 +35,13 @@ final router = GoRouter(
           builder: (context, state) => PostEditScreen(
             id: state.pathParameters['pid']!,
           ),
+        ),
+
+        /// User Routes
+        GoRoute(
+          path: ProfileScreen.routePath,
+          name: ProfileScreen.routeName,
+          builder: (context, state) => const ProfileScreen(),
         ),
       ],
     ),

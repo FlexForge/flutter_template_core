@@ -102,7 +102,7 @@ class FlexListTile extends StatelessWidget {
                             padding: const EdgeInsets.only(right: AppLayout.p2),
                             child: suffix,
                           ),
-                        if (suffix == null && trailingIcon != null)
+                        if (trailingIcon != null)
                           Padding(
                             padding: const EdgeInsets.only(right: AppLayout.p2),
                             child: Icon(
