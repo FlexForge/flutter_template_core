@@ -64,6 +64,7 @@ class UserSetupFormStepOne extends ConsumerWidget {
               hintText: 'Enter your name',
               isRequired: true,
               inputType: TextInputType.name,
+              showErrors: (control) => control.invalid && control.dirty,
               validationMessages: {
                 ValidationMessage.required: (error) =>
                     'The your name is required',

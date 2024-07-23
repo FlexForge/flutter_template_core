@@ -69,8 +69,10 @@ class UserSetupFormStepTwo extends ConsumerWidget {
               isRequired: true,
               inputAction: TextInputAction.done,
               inputType: TextInputType.emailAddress,
+              showErrors: (control) => control.invalid && control.dirty,
               validationMessages: {
                 ValidationMessage.required: (error) => 'Your email is required',
+                ValidationMessage.email: (error) => 'Must be a valid email',
               },
               padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
             ),
