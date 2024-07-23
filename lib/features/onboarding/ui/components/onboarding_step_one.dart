@@ -98,7 +98,7 @@ class OnboardingStepOne extends ConsumerWidget {
               const SizedBox(height: AppLayout.p6),
               bulletPoint('built using clean architecture'),
               const SizedBox(height: AppLayout.p2),
-              bulletPoint('local first data with objectbox'),
+              bulletPoint('local first database with objectbox'),
               const SizedBox(height: AppLayout.p2),
               bulletPoint('support for multiple build environments'),
               const SizedBox(height: AppLayout.p2),
@@ -129,7 +129,7 @@ class OnboardingStepOne extends ConsumerWidget {
               ),
               const SizedBox(height: AppLayout.p4),
               Text(
-                'Complete • Stable • Easy',
+                'Minimal • Complete • Ready',
                 style: context.typography.bodyLarge.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
