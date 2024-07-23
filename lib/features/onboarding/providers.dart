@@ -13,7 +13,8 @@ OnboardingRepository onboardingRepository(OnboardingRepositoryRef ref) {
 
   if (prefs == null) {
     throw const Failure.internalServerError(
-        message: 'Shared preferences not initialized');
+      message: 'Shared preferences not initialized',
+    );
   }
 
   return OnboardingRepository(
