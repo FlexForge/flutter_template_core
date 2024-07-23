@@ -58,16 +58,16 @@ final router = GoRouter(
     SwipeActionNavigatorObserver(),
   ],
   redirect: (context, state) {
-    // final isFirstTime = isFirstLoadListener.value;
-    // final goingToOnboard =
-    //     state.matchedLocation.contains('/${OnboardingScreen.routePath}');
+    final isFirstTime = isFirstLoadListener.value;
+    final goingToOnboard =
+        state.matchedLocation.contains('/${OnboardingScreen.routePath}');
 
-    // if (isFirstTime && !goingToOnboard) {
-    //   return '/${OnboardingScreen.routePath}';
-    // }
-    // if (!isFirstTime && goingToOnboard) return '/';
+    if (isFirstTime && !goingToOnboard) {
+      return '/${OnboardingScreen.routePath}';
+    }
+    if (!isFirstTime && goingToOnboard) return '/';
 
-    return '/${OnboardingScreen.routePath}';
+    return null;
   },
   refreshListenable: isFirstLoadListener,
   debugLogDiagnostics: true,

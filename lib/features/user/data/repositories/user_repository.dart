@@ -27,13 +27,14 @@ class UserRepository {
   }
 
   Either<Failure, UserModel> createUser({
-    required String name,
+    required String firstName,
+    required String lastName,
     required String email,
   }) {
     try {
       final userToAdd = User(
-        name,
-        name,
+        firstName,
+        lastName,
         email,
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),

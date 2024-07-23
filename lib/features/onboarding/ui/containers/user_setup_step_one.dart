@@ -68,6 +68,7 @@ class UserSetupFormStepOne extends ConsumerWidget {
               validationMessages: {
                 ValidationMessage.required: (error) =>
                     'The your name is required',
+                'invalidName': (error) => 'Please use your full name',
               },
               padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
             ),

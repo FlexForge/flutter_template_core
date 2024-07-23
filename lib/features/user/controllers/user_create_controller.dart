@@ -18,8 +18,11 @@ class UserCreateController extends _$UserCreateController {
 
     if (name == null || email == null) return;
 
+    final nameParts = name.split(' ');
+
     final res = ref.read(userRepositoryProvider).createUser(
-          name: name,
+          firstName: nameParts.first,
+          lastName: nameParts.last,
           email: email,
         );
     state = res.fold((l) => throw l, (r) => r);
