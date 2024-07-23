@@ -1,5 +1,6 @@
 import 'package:flutter_template_core/db/objectbox.g.dart';
 import 'package:flutter_template_core/db/seed/initial_data.dart';
+import 'package:flutter_template_core/features/onboarding/providers.dart';
 import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
 import 'package:flutter_template_core/features/user/data/db/user_entity.dart';
 import 'package:path/path.dart' as p;
@@ -7,10 +8,8 @@ import 'package:path_provider/path_provider.dart';
 
 class ObjectBox {
   ObjectBox._create(this.store) {
-    if (store.box<Post>().isEmpty()) {
+    if (isFirstLoadListener.value) {
       _putInitialPostData();
-    }
-    if (store.box<User>().isEmpty()) {
       _putInitialUserData();
     }
   }
