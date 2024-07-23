@@ -34,20 +34,22 @@ class PostCreateForm extends ConsumerWidget {
     return ReactivePostForm(
       form: form,
       child: FormWrapper(
-        actionButton: ReactivePostFormConsumer(
-          builder: (context, form, child) {
-            return Expanded(
-              child: LargeButton(
-                enabled: form.currentForm.valid,
-                onPressed: () =>
-                    ref.read(postFormControllerProvider.notifier).create(),
-                label: 'Create Post',
-                backgroundColor: context.colors.foregroundPrimary,
-                foregroundColor: context.colors.backgroundPrimary,
-              ),
-            );
-          },
-        ),
+        actionButtons: [
+          ReactivePostFormConsumer(
+            builder: (context, form, child) {
+              return Expanded(
+                child: LargeButton(
+                  enabled: form.currentForm.valid,
+                  onPressed: () =>
+                      ref.read(postFormControllerProvider.notifier).create(),
+                  label: 'Create Post',
+                  backgroundColor: context.colors.foregroundPrimary,
+                  foregroundColor: context.colors.backgroundPrimary,
+                ),
+              );
+            },
+          ),
+        ],
         form: Column(
           children: [
             FlexTextField<String>(

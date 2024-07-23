@@ -3,10 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
-import 'package:flutter_template_core/features/onboarding/controllers/onboarding_controller.dart';
 
 class OnboardingStepOne extends ConsumerWidget {
-  const OnboardingStepOne({super.key});
+  const OnboardingStepOne({required this.next, super.key});
+
+  final VoidCallback next;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -98,7 +99,7 @@ class OnboardingStepOne extends ConsumerWidget {
               const SizedBox(height: AppLayout.p6),
               bulletPoint('built using clean architecture'),
               const SizedBox(height: AppLayout.p2),
-              bulletPoint('local first data with objectbox'),
+              bulletPoint('local first database with objectbox'),
               const SizedBox(height: AppLayout.p2),
               bulletPoint('support for multiple build environments'),
               const SizedBox(height: AppLayout.p2),
@@ -129,7 +130,7 @@ class OnboardingStepOne extends ConsumerWidget {
               ),
               const SizedBox(height: AppLayout.p4),
               Text(
-                'Complete • Stable • Easy',
+                'Minimal • Complete • Ready',
                 style: context.typography.bodyLarge.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
@@ -140,9 +141,7 @@ class OnboardingStepOne extends ConsumerWidget {
                 child: LargeButton(
                   label: 'Get started now',
                   expanded: true,
-                  onPressed: () => ref
-                      .read(onboardingControllerProvider.notifier)
-                      .setIsFirstLoad(isFirstLoad: false),
+                  onPressed: next,
                   backgroundColor: context.colors.foregroundPrimary,
                   foregroundColor: context.colors.backgroundPrimary,
                 ),

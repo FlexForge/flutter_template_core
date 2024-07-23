@@ -6,6 +6,7 @@ class LargeButton extends StatelessWidget {
   const LargeButton({
     this.label,
     this.icon,
+    this.child,
     this.onPressed,
     this.backgroundColor,
     this.foregroundColor,
@@ -19,6 +20,7 @@ class LargeButton extends StatelessWidget {
 
   final String? label;
   final IconData? icon;
+  final Widget? child;
   final void Function()? onPressed;
   final Color? backgroundColor;
   final Color? foregroundColor;
@@ -59,26 +61,27 @@ class LargeButton extends StatelessWidget {
                   : (icon == null ? AppLayout.p4 : AppLayout.p2),
               AppLayout.p3,
             ),
-        child: Row(
-          mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (label != null)
-              Text(
-                label!,
-                style: context.typography.labelLarge.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            if (icon != null && label != null)
-              const SizedBox(width: AppLayout.p1),
-            if (icon != null)
-              Icon(
-                icon,
-                size: 20,
-              ),
-          ],
-        ),
+        child: child ??
+            Row(
+              mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (label != null)
+                  Text(
+                    label!,
+                    style: context.typography.labelLarge.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                if (icon != null && label != null)
+                  const SizedBox(width: AppLayout.p1),
+                if (icon != null)
+                  Icon(
+                    icon,
+                    size: 20,
+                  ),
+              ],
+            ),
       ),
     );
   }

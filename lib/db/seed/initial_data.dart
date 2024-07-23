@@ -2,16 +2,6 @@
 // cSpell:dictionaries lorem-ipsum
 
 import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
-import 'package:flutter_template_core/features/user/data/db/user_entity.dart';
-
-final demoUser = User(
-  'John',
-  'Doe',
-  'email@example.com',
-  birthDate: DateTime(1980),
-  updatedAt: DateTime.now(),
-  createdAt: DateTime.now(),
-);
 
 final demoPosts = [
   Post(

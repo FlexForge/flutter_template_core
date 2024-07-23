@@ -10,9 +10,7 @@ class ThemeController extends _$ThemeController {
   ThemeMode build() {
     final res = ref.watch(userRepositoryProvider).getUser();
 
-    final user = res.fold((l) => throw l, (r) => r);
-
-    return user.preferredTheme;
+    return res.fold((l) => ThemeMode.system, (r) => r.preferredTheme);
   }
 
   void handle(ThemeMode theme) {

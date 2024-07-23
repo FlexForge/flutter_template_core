@@ -14,6 +14,7 @@ class FlexTextField<T> extends ConsumerWidget {
     this.hintText,
     this.errorText,
     this.suffix,
+    this.showErrors,
     this.inputAction = TextInputAction.next,
     this.inputType = TextInputType.text,
     this.inputCapitalization = TextCapitalization.none,
@@ -30,6 +31,7 @@ class FlexTextField<T> extends ConsumerWidget {
   final String? label;
   final String? formControlName;
   final FormControl<T>? formControl;
+  final bool Function(FormControl<T>)? showErrors;
   final bool isRequired;
   final bool obscureText;
   final bool isTextArea;
@@ -75,6 +77,7 @@ class FlexTextField<T> extends ConsumerWidget {
           ReactiveTextField<T>(
             formControlName: formControlName,
             formControl: formControl,
+            showErrors: showErrors,
             textInputAction: inputAction,
             textCapitalization: inputCapitalization,
             textAlignVertical: TextAlignVertical.center,

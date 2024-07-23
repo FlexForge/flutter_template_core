@@ -5,17 +5,20 @@ import 'package:flutter_template_core/core/theme/app_layout.dart';
 class FormWrapper extends StatelessWidget {
   const FormWrapper({
     required this.form,
-    this.actionButton,
+    this.actionButtons,
+    this.backgroundColor,
     super.key,
   });
 
   final Widget form;
-  final Widget? actionButton;
+  final List<Widget>? actionButtons;
+
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colors.backgroundSecondary,
+      backgroundColor: backgroundColor ?? context.colors.backgroundSecondary,
       body: SizedBox.expand(
         child: Stack(
           children: [
@@ -35,7 +38,7 @@ class FormWrapper extends StatelessWidget {
                 ],
               ),
             ),
-            if (actionButton != null)
+            if (actionButtons != null)
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -51,15 +54,16 @@ class FormWrapper extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       stops: const [0, 0.5],
                       colors: [
-                        context.colors.backgroundSecondary.withOpacity(0),
-                        context.colors.backgroundSecondary,
+                        backgroundColor?.withOpacity(0) ??
+                            context.colors.backgroundSecondary.withOpacity(0),
+                        backgroundColor ?? context.colors.backgroundSecondary,
                       ],
                     ),
                   ),
                   child: SafeArea(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [actionButton!],
+                      children: actionButtons!,
                     ),
                   ),
                 ),
