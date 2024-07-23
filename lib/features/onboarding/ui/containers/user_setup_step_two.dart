@@ -5,6 +5,7 @@ import 'package:flutter_template_core/core/common/ui/forms/flex_text_field.dart'
 import 'package:flutter_template_core/core/common/ui/forms/form_wrapper.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
+import 'package:flutter_template_core/features/onboarding/controllers/onboarding_controller.dart';
 import 'package:flutter_template_core/features/onboarding/controllers/user_form_controller.dart';
 import 'package:flutter_template_core/features/onboarding/data/models/user_form_model.dart';
 import 'package:reactive_forms_annotations/reactive_forms_annotations.dart';
@@ -36,7 +37,12 @@ class UserSetupFormStepTwo extends ConsumerWidget {
             builder: (context, form, child) => Expanded(
               child: LargeButton(
                 enabled: form.emailControl?.valid ?? false,
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(userFormControllerProvider.notifier).create();
+                  ref
+                      .read(onboardingControllerProvider.notifier)
+                      .setIsFirstLoad(isFirstLoad: false);
+                },
                 label: 'Go to app',
                 icon: Icons.check,
                 backgroundColor: context.colors.foregroundPrimary,

@@ -1,4 +1,5 @@
 import 'package:flutter_template_core/features/onboarding/data/models/user_form_model.dart';
+import 'package:flutter_template_core/features/user/controllers/user_create_controller.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'user_form_controller.g.dart';
@@ -8,5 +9,9 @@ class UserFormController extends _$UserFormController {
   @override
   UserForm build() {
     return UserForm(UserForm.formElements(const User()), null);
+  }
+
+  void create() {
+    ref.read(userCreateControllerProvider.notifier).handle(state);
   }
 }

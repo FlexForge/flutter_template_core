@@ -26,6 +26,36 @@ class UserRepository {
     }
   }
 
+  Either<Failure, UserModel> createUser({
+    required String name,
+    required String email,
+  }) {
+    try {
+      final userToAdd = User(
+        name,
+        name,
+        email,
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      );
+      final id = box.put(userToAdd);
+
+      final res = box.get(id);
+
+      if (res == null) {
+        return left(
+          const Failure.internalServerError(
+            message: 'Unable to fetch new post',
+          ),
+        );
+      }
+
+      return right(res.toModel());
+    } catch (e) {
+      return left(Failure.internalServerError(message: e.toString()));
+    }
+  }
+
   Either<Failure, ThemeMode> updateTheme({
     required ThemeMode theme,
   }) {

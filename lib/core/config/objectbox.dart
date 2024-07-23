@@ -2,7 +2,6 @@ import 'package:flutter_template_core/db/objectbox.g.dart';
 import 'package:flutter_template_core/db/seed/initial_data.dart';
 import 'package:flutter_template_core/features/onboarding/providers.dart';
 import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
-import 'package:flutter_template_core/features/user/data/db/user_entity.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
@@ -10,7 +9,6 @@ class ObjectBox {
   ObjectBox._create(this.store) {
     if (isFirstLoadListener.value) {
       _putInitialPostData();
-      _putInitialUserData();
     }
   }
 
@@ -31,9 +29,5 @@ class ObjectBox {
 
   void _putInitialPostData() {
     store.box<Post>().putManyAsync(demoPosts);
-  }
-
-  void _putInitialUserData() {
-    store.box<User>().put(demoUser);
   }
 }
