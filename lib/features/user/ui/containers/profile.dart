@@ -50,6 +50,23 @@ class Profile extends ConsumerWidget {
               ),
             ),
           ),
+          Divider(indent: 54, height: 1, color: context.colors.divider),
+          FlexListTile(
+            disabledForegroundColor: context.colors.foregroundPrimary,
+            title: Text(
+              'Sex',
+              style: context.typography.bodyMedium.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            icon: Icons.male,
+            suffix: Text(
+              user.isMale ? 'Male' : 'Female',
+              style: context.typography.bodyMedium.copyWith(
+                color: context.colors.foregroundSecondary,
+              ),
+            ),
+          ),
           if (user.birthDate != null) ...[
             Divider(indent: 54, height: 1, color: context.colors.divider),
             FlexListTile(

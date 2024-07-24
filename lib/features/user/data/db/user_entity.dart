@@ -9,6 +9,7 @@ class User {
     this.lastName,
     this.email, {
     this.id = 0,
+    this.isMale = true,
     this.preferredTheme = ThemeMode.system,
     this.userName,
     this.birthDate,
@@ -22,6 +23,7 @@ class User {
   String firstName;
   String lastName;
   String email;
+  bool isMale;
 
   String? userName;
   @Property(type: PropertyType.date)
@@ -61,6 +63,7 @@ extension ConvertUser on User {
         lastName: lastName,
         email: email,
         birthDate: birthDate,
+        isMale: isMale,
         userName: userName,
         preferredTheme: preferredTheme,
         updatedAt: updatedAt,

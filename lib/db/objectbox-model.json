@@ -39,7 +39,7 @@
     },
     {
       "id": "2:7099505425389710553",
-      "lastPropertyId": "9:7150087961937088089",
+      "lastPropertyId": "10:6086866130577470171",
       "name": "User",
       "properties": [
         {
@@ -87,6 +87,11 @@
           "id": "9:7150087961937088089",
           "name": "dbPreferredTheme",
           "type": 6
+        },
+        {
+          "id": "10:6086866130577470171",
+          "name": "isMale",
+          "type": 1
         }
       ],
       "relations": []

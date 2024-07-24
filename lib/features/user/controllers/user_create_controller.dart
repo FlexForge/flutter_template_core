@@ -15,8 +15,9 @@ class UserCreateController extends _$UserCreateController {
   void handle(UserForm form) {
     final name = form.model.name;
     final email = form.model.email;
+    final sex = form.model.sex;
 
-    if (name == null || email == null) return;
+    if (name == null || email == null || sex == null) return;
 
     final nameParts = name.split(' ');
 
@@ -24,6 +25,7 @@ class UserCreateController extends _$UserCreateController {
           firstName: nameParts.first,
           lastName: nameParts.last,
           email: email,
+          isMale: sex == 1,
         );
     state = res.fold((l) => throw l, (r) => r);
   }

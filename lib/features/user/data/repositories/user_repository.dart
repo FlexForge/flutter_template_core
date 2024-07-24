@@ -30,12 +30,14 @@ class UserRepository {
     required String firstName,
     required String lastName,
     required String email,
+    required bool isMale,
   }) {
     try {
       final userToAdd = User(
         firstName,
         lastName,
         email,
+        isMale: isMale,
         createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
       );
