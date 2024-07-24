@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template_core/core/common/ui/components/flex_radio_list_item.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/common/ui/forms/flex_radio_list.dart';
 import 'package:flutter_template_core/core/common/ui/forms/form_wrapper.dart';
@@ -42,7 +43,6 @@ class UserSetupFormStepThree extends ConsumerWidget {
                       .read(onboardingControllerProvider.notifier)
                       .setIsFirstLoad(isFirstLoad: false);
                 },
-                // onPressed: () => print(form.sexControl?.value),
                 label: 'Go to app',
                 icon: Icons.check,
                 backgroundColor: context.colors.foregroundPrimary,
@@ -65,8 +65,14 @@ class UserSetupFormStepThree extends ConsumerWidget {
             const SizedBox(height: AppLayout.p4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
-              child: FlexRadioList(
+              child: FlexRadioList<RadioListItem>(
                 formControl: form.sexControl,
+                builder: (e, selected, onPressed) => RadioListItem(
+                  name: e.name,
+                  icon: e.icon,
+                  selected: selected,
+                  onPressed: onPressed,
+                ),
                 options: const [
                   RadioListItem(name: 'Female', icon: Icons.female),
                   RadioListItem(name: 'Male', icon: Icons.male),
