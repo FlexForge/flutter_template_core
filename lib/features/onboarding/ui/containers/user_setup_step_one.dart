@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_template_core/core/common/ui/components/info_card.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/common/ui/forms/flex_text_field.dart';
 import 'package:flutter_template_core/core/common/ui/forms/form_wrapper.dart';
@@ -71,6 +72,16 @@ class UserSetupFormStepOne extends ConsumerWidget {
                 'invalidName': (error) => 'Please use your full name',
               },
               padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
+            ),
+            const SizedBox(height: AppLayout.p4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
+              child: InfoCard(
+                icon: Icons.info,
+                info: 'Please note none of this information is recorded this is'
+                    ' just a demo, to showcase a multi page form',
+                backgroundColor: context.colors.backgroundSecondary,
+              ),
             ),
           ],
         ),

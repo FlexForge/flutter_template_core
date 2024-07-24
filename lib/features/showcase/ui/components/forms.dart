@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_template_core/core/common/ui/components/info_card.dart';
 import 'package:flutter_template_core/core/common/ui/components/section.dart';
 import 'package:flutter_template_core/core/common/ui/forms/flex_text_field.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
@@ -44,6 +46,13 @@ class FormShowcase extends StatelessWidget {
                         'The textField cannot exceed '
                         '$textAreaMaxLength characters',
                   },
+                ),
+                const SizedBox(height: AppLayout.p4),
+                const InfoCard(
+                  icon: Icons.info,
+                  info:
+                      'This component can be used to display extra information'
+                      ' about the form to the user.',
                 ),
               ],
             );
