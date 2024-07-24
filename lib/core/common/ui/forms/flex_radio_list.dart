@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';

@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             UserSetupFormStepThree(
               back: () => _updateCurrentPageIndex(4),
-            )
+            ),
           ],
         ),
       ),
