@@ -13,6 +13,7 @@ class LargeButton extends StatelessWidget {
     this.borderColor,
     this.padding,
     this.borderRadius,
+    this.borderWidth = 2,
     this.enabled = true,
     this.expanded = false,
     super.key,
@@ -27,6 +28,7 @@ class LargeButton extends StatelessWidget {
   final Color? borderColor;
   final EdgeInsets? padding;
   final double? borderRadius;
+  final double borderWidth;
   final bool enabled;
   final bool expanded;
 
@@ -47,7 +49,7 @@ class LargeButton extends StatelessWidget {
               BorderRadius.circular(borderRadius ?? AppLayout.cornerRadius),
           side: BorderSide(
             color: borderColor ?? Colors.transparent,
-            width: 2,
+            width: borderWidth,
           ),
         ),
       ),

@@ -14,6 +14,6 @@ class User with _$User {
     @RfControl(validators: [RequiredValidator(), EmailValidator()])
     String? email,
     @RfControl<dynamic>() DateTime? birthDate,
-    @RfControl<dynamic>() bool? sex,
+    @RfControl(validators: [RequiredValidator()]) int? sex,
   }) = _User;
 }
