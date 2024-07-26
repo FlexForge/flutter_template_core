@@ -1,6 +1,6 @@
 import 'package:flutter_template_core/db/objectbox.g.dart';
 import 'package:flutter_template_core/db/seed/initial_data.dart';
-import 'package:flutter_template_core/features/onboarding/providers.dart';
+import 'package:flutter_template_core/features/auth/providers.dart';
 import 'package:flutter_template_core/features/posts/data/db/post_entity.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';

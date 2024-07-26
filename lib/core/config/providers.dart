@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/bootstrap.dart';
 import 'package:flutter_template_core/db/objectbox.g.dart';
-import 'package:flutter_template_core/features/onboarding/controllers/onboarding_controller.dart';
+import 'package:flutter_template_core/features/auth/controllers/onboarding_controller.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
