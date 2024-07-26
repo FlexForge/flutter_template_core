@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/common/ui/components/section.dart';
 import 'package:flutter_template_core/core/extensions/ui_extensions.dart';
 import 'package:flutter_template_core/core/theme/app_layout.dart';
-import 'package:flutter_template_core/features/auth/controllers/theme_controller.dart';
-import 'package:flutter_template_core/features/auth/ui/components/theme_display.dart';
+import 'package:flutter_template_core/features/system/controllers/theme_controller.dart';
+import 'package:flutter_template_core/features/system/ui/components/theme_display.dart';
 
 class ThemeSelector extends ConsumerWidget {
   const ThemeSelector({super.key});
