@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/core/common/ui/components/flex_radio_list_item.dart';
+import 'package:flutter_template_core/core/common/ui/components/info_card.dart';
 import 'package:flutter_template_core/core/common/ui/components/large_button.dart';
 import 'package:flutter_template_core/core/common/ui/forms/flex_radio_list.dart';
 import 'package:flutter_template_core/core/common/ui/forms/form_wrapper.dart';
@@ -77,6 +78,16 @@ class UserSetupFormStepThree extends ConsumerWidget {
                   RadioListItem(name: 'Female', icon: Icons.female),
                   RadioListItem(name: 'Male', icon: Icons.male),
                 ],
+              ),
+            ),
+            const SizedBox(height: AppLayout.p4),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppLayout.p4),
+              child: InfoCard(
+                icon: Icons.info,
+                info: 'Here is a small showcase of a radio list'
+                    ' item form control',
+                backgroundColor: context.colors.backgroundSecondary,
               ),
             ),
           ],
