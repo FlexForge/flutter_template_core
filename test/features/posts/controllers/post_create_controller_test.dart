@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/features/posts/controllers/post_create_controller.dart';
-import 'package:flutter_template_core/features/posts/controllers/post_list_controller.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_form_model.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
 import 'package:flutter_template_core/features/posts/providers.dart';
@@ -36,9 +35,21 @@ void main() {
     });
 
     group('handle', () {
+      final mockPost = Post(
+        name: faker.randomGenerator.string(20),
+        author: faker.person.name(),
+        body: faker.randomGenerator.string(1000),
+      );
+
       test('should create post when all form items are filled', () {
-        const mockPost = Post(name: 'name', body: 'body', author: 'author');
         final inputForm = PostForm(PostForm.formElements(mockPost), null);
+
+        final expected = PostModel(
+          id: 1,
+          title: mockPost.name!,
+          author: mockPost.author!,
+          body: mockPost.body,
+        );
 
         when(
           () => mockPostRepository.createPost(
@@ -61,6 +72,32 @@ void main() {
         container.read(postCreateControllerProvider.notifier).handle(inputForm);
 
         final res = container.read(postCreateControllerProvider);
+
+        expect(res, expected);
+      });
+
+      test('should return null when name is null', () {
+        final inputPost = mockPost.copyWith(name: null);
+        final inputForm = PostForm(PostForm.formElements(inputPost), null);
+
+        final container = createPostCreateContainer();
+        container.read(postCreateControllerProvider.notifier).handle(inputForm);
+
+        final res = container.read(postCreateControllerProvider);
+
+        expect(res, null);
+      });
+
+      test('should return null when author is null', () {
+        final inputPost = mockPost.copyWith(author: null);
+        final inputForm = PostForm(PostForm.formElements(inputPost), null);
+
+        final container = createPostCreateContainer();
+        container.read(postCreateControllerProvider.notifier).handle(inputForm);
+
+        final res = container.read(postCreateControllerProvider);
+
+        expect(res, null);
       });
     });
   });
