@@ -1,6 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_template_core/features/posts/controllers/post_create_controller.dart';
+import 'package:flutter_template_core/features/posts/controllers/post_edit_controller.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_form_model.dart';
 import 'package:flutter_template_core/features/posts/data/models/post_model.dart';
 import 'package:flutter_template_core/features/posts/providers.dart';
@@ -18,7 +19,7 @@ void main() {
     mockPostRepository = MockPostRepository();
   });
 
-  ProviderContainer createPostCreateContainer() {
+  ProviderContainer createPostEditContainer() {
     return createContainer(
       overrides: [
         postRepositoryProvider.overrideWithValue(mockPostRepository),
@@ -26,19 +27,34 @@ void main() {
     );
   }
 
-  group('PostCreateController', () {
-    test('should return null on call', () {
-      final container = createPostCreateContainer();
-      final res = container.read(postCreateControllerProvider);
+  group('PostEditController', () {
+    final mockPost = PostModel(
+      id: 1,
+      title: faker.randomGenerator.string(20),
+      author: faker.person.name(),
+    );
 
-      expect(res, null);
+    test('should return post to edit on call', () {
+      when(
+        () => mockPostRepository.getPostById(mockPost.id.toString()),
+      ).thenReturn(right(mockPost));
+
+      final container = createPostEditContainer();
+      final res =
+          container.read(postEditControllerProvider(mockPost.id.toString()));
+
+      expect(res, mockPost);
     });
 
     group('handle', () {
+      final originalPost = PostModel(
+        id: 1,
+        title: faker.randomGenerator.string(20),
+        author: faker.person.name(),
+      );
       final mockPost = Post(
         name: faker.randomGenerator.string(20),
         author: faker.person.name(),
-        body: faker.randomGenerator.string(1000),
       );
 
       test('should create post when all form items are filled', () {
@@ -52,17 +68,23 @@ void main() {
         );
 
         when(
-          () => mockPostRepository.createPost(
+          () => mockPostRepository.updatePost(
+            originalPost: originalPost,
             name: mockPost.name!,
             body: mockPost.body,
             author: mockPost.author!,
           ),
         ).thenReturn(right(expected));
 
-        final container = createPostCreateContainer();
-        container.read(postCreateControllerProvider.notifier).handle(inputForm);
+        final container = createPostEditContainer();
+        container
+            .read(
+              postEditControllerProvider(originalPost.id.toString()).notifier,
+            )
+            .handle(inputForm, originalPost);
 
-        final res = container.read(postCreateControllerProvider);
+        final res = container
+            .read(postEditControllerProvider(originalPost.id.toString()));
 
         expect(res, expected);
       });
@@ -71,8 +93,11 @@ void main() {
         final inputPost = mockPost.copyWith(name: null);
         final inputForm = PostForm(PostForm.formElements(inputPost), null);
 
-        final container = createPostCreateContainer();
-        container.read(postCreateControllerProvider.notifier).handle(inputForm);
+        final container = createPostEditContainer();
+        container
+            .read(
+                postEditControllerProvider(originalPost.id.toString()).notifier)
+            .handle(inputForm, originalPost);
 
         final res = container.read(postCreateControllerProvider);
 
@@ -83,8 +108,11 @@ void main() {
         final inputPost = mockPost.copyWith(author: null);
         final inputForm = PostForm(PostForm.formElements(inputPost), null);
 
-        final container = createPostCreateContainer();
-        container.read(postCreateControllerProvider.notifier).handle(inputForm);
+        final container = createPostEditContainer();
+        container
+            .read(
+                postEditControllerProvider(originalPost.id.toString()).notifier)
+            .handle(inputForm, originalPost);
 
         final res = container.read(postCreateControllerProvider);
 
