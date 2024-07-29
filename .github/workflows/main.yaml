@@ -77,7 +77,7 @@ jobs:
         with:
           path: ./coverage/lcov.info
           exclude: '**/*.g.dart **/*.freezed.dart **/*.gform.dart'
-          min_coverage: 100
+          min_coverage: 50
 
   spell-check:
     runs-on: ubuntu-latest

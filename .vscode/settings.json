@@ -27,8 +27,6 @@
     "workbench.editor.showIcons": false,
     // Hide statusbar
     // "workbench.statusBar.visible": false,
-    // Color for Indenticator(for indentation level)
-    "indenticator.color.dark": "rgba(255,255,255,.1)",
     "workbench.colorCustomizations": { 
       // Tab active border
       "tab.activeBorder": "#0000"
@@ -38,19 +36,19 @@
     "editor.fontLigatures": true,
     // Enable the cool cursive like font variations
     "editor.fontVariations": true,
-    // Enables that smooth caret animation, mwah !
+    // Enables that smooth caret animation!
     "editor.cursorBlinking": "phase",
     // Make the cursor move around the code smoothly
     "editor.cursorSmoothCaretAnimation": "on",
     // Adjusts the line height. Also changes the caret width
     "editor.lineHeight": 26,
-    // Enable line numbesr
+    // Enable line numbers
     "editor.lineNumbers": "on",
     // Enables different color pools for different bracket types, for example {}, [], ()
     "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
     // Enable guides for bracket pairs
     "editor.guides.bracketPairs": false,
-    // Disbles breadcrumbs. Please, do not enable them, for the love of god, please
+    // Disables breadcrumbs. Please, do not enable them, for the love of god, please
     "breadcrumbs.enabled": false,
     // Sets the window title 
     "window.title": "${dirty}${activeEditorShort}",
